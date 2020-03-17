@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "Jobs";
+    Layout = "~/Views/Shared/_LayoutAdministrators.cshtml";
+}
+
+<div class="row page-titles">
+
+    <div class="col-md-6 col-8 align-self-center">
+        <h3 class="text-themecolor m-b-0 m-t-0">Semua Pekerjaan</h3>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active">Kelola Pekerjaan</li>
+        </ol>
+    </div>
+</div>
+
+
+<div class="card">
+    <div class="card-body">
+        @*<p><a class="btn btn-info" href="@Url.Action("AddFreeEvent")">Tambah Event Gratis</a> | <a class="btn btn-info" href="@Url.Action("AddPaidEvent")">Tambah Event Berbayar</a> | <a class="btn btn-info" href="@Url.Action("AddSupportingEvent")">Tambah Event Support</a></p>*@
+        <div class="table-responsive m-t-40">
+            <table id="myTable" class="table table-bordered table-striped">
+                <thead class="table-header">
+                    <tr class="color-table">
+                        <th>Title</th>
+                        <th>Descriptions</th>
+                        <th>Lokasi</th>
+                        <th>Penyelenggara</th>
+                        <th>Sertifikat</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>sadas dasd asd asd asdasdasdasd asd asdasd</td>
+                        <td>sadas dasd asd asd asdasdasdasd asd asdasd</td>
+                        <td>sadas dasd asd asd asdasdasdasd asd asdasd</td>
+                        <td>sadas dasd asd asd asdasdasdasd asd asdasd</td>
+                        <td>sadas dasd asd asd asdasdasdasd asd asdasd</td>
+                        <td>sadas dasd asd asd asdasdasdasd asd asdasd</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Styles
+{
+    <link rel="stylesheet" href="~/assets/css/custom.css">
+}
+@section Scripts{
+    <script src="~/assets/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+
+        });
+    </script>
+}
+
+

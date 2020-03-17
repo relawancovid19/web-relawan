@@ -15,6 +15,7 @@ namespace Volunteers.Models
         public string Title { get; set; }
         public string Descriptions { get; set; }
         public string Banner { get; set; }
+        public string Location { get; set; }
         public DateTimeOffset Created { get; set; }
         public DateTimeOffset Start { get; set; }
         public DateTimeOffset Finish { get; set; }

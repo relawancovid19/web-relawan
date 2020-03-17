@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/Images/favicon.ico">
+    <title>Relawan Covid-19</title>
+    <link href="~/assets/vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/chartist-js/dist/chartist.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/chartist-js/dist/chartist-init.css" rel="stylesheet">
+    <link href="~/assets/vendor/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css" rel="stylesheet">
+    <link href="~/assets/vendor/css-chart/css-chart.css" rel="stylesheet">
+    <link href="~/assets/vendor/toast-master/css/jquery.toast.css" rel="stylesheet">
+    <link href="~/assets/admin/css/style.css" rel="stylesheet">
+    <link href="~/assets/vendor/select2/dist/css/select2.min.css" rel="stylesheet" type="text/css" />
+    @RenderSection("styles", required: false)
+    <link href="~/assets/admin/css/colors/blue.css" id="theme" rel="stylesheet">
+    <link href="~/assets/admin/css/custom.css" rel="stylesheet" />
+</head>
+<body class="fix-header fix-sidebar card-no-border">
+    <div class="preloader">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+        </svg>
+    </div>
+    <div id="main-wrapper">
+        <header class="topbar">
+            <nav class="navbar top-navbar navbar-expand-md navbar-light">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">
+                        <b>
+                            <img src="~/assets/images/logo/as-icon.png" alt="homepage" class="dark-logo" style="width: 40px;" />
+                            <img src="~/assets/images/logo/as-icon.png" alt="homepage" class="light-logo" style="width: 40px;" />
+                        </b>
+                        <span>
+                            <img src="~/assets/images/logo/acara-seru-without-logo.png" alt="homepage" class="dark-logo" style="width: 148px;" />
+                            <img src="~/assets/images/logo/acara-seru-without-logo.png" class="light-logo" alt="homepage" style="width: 148px;" />
+                        </span>
+                    </a>
+                </div>
+                <div class="navbar-collapse">
+                    <ul class="navbar-nav mr-auto mt-md-0">
+                        <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                        <li class="nav-item"> <a class="nav-link sidebartoggler hidden-sm-down text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="icon-arrow-left-circle"></i></a> </li>
+                    </ul>
+                    <ul class="navbar-nav my-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="~/assets/images/logo/as-icon.png" alt="user" class="profile-pic" /></a>
+                            <div class="dropdown-menu dropdown-menu-right animated flipInY">
+                                <ul class="dropdown-user">
+                                    <li>
+                                        <div class="dw-user-box">
+                                            <div class="u-img"><img src="~/assets/images/logo/as-icon.png" alt="user"></div>
+                                            <div class="u-info">
+                                                <h4 class="c-m-0">Administrator</h4>
+                                                <p class="text-muted">Relawan Administrator</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li><a href="@Url.Action("LogOff", "Account")"><i class="fa fa-power-off"></i> Logout</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <div id="adminSidebar">
+            <aside class="left-sidebar">
+                <div class="user-profile">
+                    <div class="profile-img"> <img src="~/assets/images/logo/as-icon.png" alt="user" /> </div>
+                    <div class="profile-text">
+                        <a href="#" class="dropdown-toggle link u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">@ViewBag.FullName <span class="caret"></span></a>
+                        <div class="dropdown-menu animated flipInY">
+                            <p role="separator" class="divider"></p>
+                            <a href="@Url.Action("LogOff", "Account")" class="dropdown-item"><i class="fa fa-power-off"></i> Logout</a>
+                        </div>
+                    </div>
+                </div>
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <li class="nav-small-cap">ADMINISTRASI</li>
+                        <li>
+                            <a href="@Url.Action("Jobs", "Administrators")"><i class="ti-agenda"></i><span class="hide-menu">Pekerjaan</span></a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Hosts", "Administrators")"><i class="ti-home"></i><span class="hide-menu">Organisasi</span></a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Hosts", "Administrators")"><i class="ti-user"></i><span class="hide-menu">Sukarelawan</span></a>
+                        </li>
+                        <li class="mb-10"></li>
+                    </ul>
+                </nav>
+                <div class="sidebar-footer">
+                    <a href="" class="link" data-toggle="tooltip" title="Settings"><i class="ti-settings"></i></a>
+                    <a href="" class="link" data-toggle="tooltip" title="Email"><i class="mdi mdi-gmail"></i></a>
+                    <a href="@Url.Action("LogOff", "Account")" class="link" data-toggle="tooltip" title="Logout"><i class="mdi mdi-power"></i></a>
+                </div>
+            </aside>
+        </div>
+
+        <div class="page-wrapper">
+            <div class="container-fluid">
+                @RenderBody()
+            </div>
+            <footer class="footer">
+                © 2020 Relawan Covid-19 Administrator
+            </footer>
+        </div>
+    </div>
+
+    <script src="~/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="~/assets/vendor/popper.min.js"></script>
+    <script src="~/assets/vendor/bootstrap/bootstrap.min.js"></script>
+    <script src="~/assets/admin/js/jquery.slimscroll.js"></script>
+    <script src="~/assets/admin/js/waves.js"></script>
+    <script src="~/assets/admin/js/sidebarmenu.js"></script>
+    <script src="~/assets/vendor/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <script src="~/assets/admin/js/custom.min.js"></script>
+    <script src="~/assets/vendor/styleswitcher/jQuery.style.switcher.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

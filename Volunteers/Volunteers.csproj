@@ -181,6 +181,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdministratorsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -198,6 +199,10 @@
     <Compile Include="Migrations\202003171320367_JobTransactionV1.cs" />
     <Compile Include="Migrations\202003171320367_JobTransactionV1.Designer.cs">
       <DependentUpon>202003171320367_JobTransactionV1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003171631337_Job_v1.cs" />
+    <Compile Include="Migrations\202003171631337_Job_v1.Designer.cs">
+      <DependentUpon>202003171631337_Job_v1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Job.cs" />
@@ -5604,6 +5609,8 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Administrators\Jobs.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdministrators.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -5631,6 +5638,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003171320367_JobTransactionV1.resx">
       <DependentUpon>202003171320367_JobTransactionV1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003171631337_Job_v1.resx">
+      <DependentUpon>202003171631337_Job_v1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
