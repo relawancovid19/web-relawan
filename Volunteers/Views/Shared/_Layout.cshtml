@@ -1,44 +1,233 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <title>COVID-19</title>
+    <meta name="description" content="Sekarang kamu bisa menemukan berbagai berita tentang Covid-19">
+    <meta name="author" content="Covid-19">
+    <meta name="twitter:card" content="summary">
+    @*<meta name="twitter:site" content="@hostTwitter">*@
+    <meta name="twitter:title" content="Covid-19">
+    <meta name="twitter:description" content="Sekarang kamu bisa menemukan berbagai berita tentang Covid-19">
+    <meta name="twitter:image" content="#">
+    <meta name="twitter:image:alt" content="Covid-19">
 
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Covid-19">
+    <meta property="og:description" content="Sekarang kamu bisa menemukan berbagai berita tentang Covid-19">
+    @*<meta property="og:url" content="@hostCustomDomain">*@
+    <meta property="og:image" content="#">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="apple-touch-icon" sizes="57x57" href="~/assets/images/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="~/assets/images/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="~/assets/images/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="~/assets/images/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="~/assets/images/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="~/assets/images/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="~/assets/images/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="~/assets/images/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="~/assets/images/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="~/assets/images/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/assets/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="~/assets/images/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/assets/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="~/assets/images/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="~/assets/images/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans%3A300%2C400%2C500%2C600%2C700%2C800%7CPlayfair+Display%7CRoboto%7CRaleway%7CSpectral%7CRubik">
+    <link rel="stylesheet" href="~/assets/vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="~/assets/vendor/icon-awesome/css/font-awesome-update.css">
+    <link rel="stylesheet" href="~/assets/vendor/icon-line/css/simple-line-icons-update.css">
+    <link rel="stylesheet" href="~/assets/vendor/icon-hs/style.css">
+    <link rel="stylesheet" href="~/assets/vendor/hamburgers/hamburgers.min.css">
+    <link rel="stylesheet" href="~/assets/vendor/animate.css">
+    <link rel="stylesheet" href="~/assets/vendor/slick-carousel/slick/slick.css">
+    <link rel="stylesheet" href="~/assets/vendor/fancybox/jquery.fancybox.css">
+    <link rel="stylesheet" href="~/assets/css/styles.op-event.css">
+    <link rel="stylesheet" href="~/assets/css/custom.css">
+    @RenderSection("styles", required: false)
+    <script type='text/javascript'>
+        var appInsights = window.appInsights || function (config) {
+            function r(config) { t[config] = function () { var i = arguments; t.queue.push(function () { t[config].apply(t, i) }) } }
+            var t = { config: config }, u = document, e = window, o = 'script', s = u.createElement(o), i, f; for (s.src = config.url || '//az416426.vo.msecnd.net/scripts/a/ai.0.js', u.getElementsByTagName(o)[0].parentNode.appendChild(s), t.cookie = u.cookie, t.queue = [], i = ['Event', 'Exception', 'Metric', 'PageView', 'Trace', 'Ajax']; i.length;)r('track' + i.pop()); return r('setAuthenticatedUserContext'), r('clearAuthenticatedUserContext'), config.disableExceptionTracking || (i = 'onerror', r('_' + i), f = e[i], e[i] = function (config, r, u, e, o) { var s = f && f(config, r, u, e, o); return s !== !0 && t['_' + i](config, r, u, e, o), s }), t
+        }({
+            instrumentationKey: '6930c336-7245-4f26-a780-7420790dfc47'
+        });
+
+        window.appInsights = appInsights;
+        appInsights.trackPageView();
+    </script>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
-        </div>
+    <div class="preloader">
+        <div class="loader"></div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+    <main>
+        <header id="js-header" class="u-header u-header--sticky-top u-header--change-appearance g-z-index-9999"
+                data-header-fix-moment="100">
+            <div class="light-theme u-header__section g-bg-darkblue-opacity-0_7 g-transition-0_3 g-py-10"
+                 data-header-fix-moment-exclude="light-theme g-bg-darkblue-opacity-0_7"
+                 data-header-fix-moment-classes="dark-theme u-shadow-v18 g-bg-white-opacity-0_9">
+                <nav class="navbar navbar-expand-lg g-py-0">
+                    <div class="container g-pos-rel">
+                        <a href="@Url.Action("Index", "Home")" class="navbar-brand u-header__logo"
+                           data-type="static">
+                            <img class="u-header__logo-img40 u-header__logo-img--main d-block g-height-40" src="#" alt="Acara Seru"
+                                 data-header-fix-moment-exclude="d-block"
+                                 data-header-fix-moment-classes="d-none" />
+                            <img class="u-header__logo-img40 u-header__logo-img--main d-none g-height-40" src="#" alt="Acara Seru"
+                                 data-header-fix-moment-exclude="d-none"
+                                 data-header-fix-moment-classes="d-block" />
+                        </a>
+                        <div class="collapse navbar-collapse align-items-center flex-sm-row" id="navBar">
+                            <ul id="js-scroll-nav" class="navbar-nav text-uppercase g-font-weight-700 g-font-size-11 g-pt-20 g-pt-5--lg ml-auto">
+                                <li class="nav-item g-mr-15--lg g-mb-7 g-mb-0--lg active">
+                                    <a href="@Url.Action("Index", "Home")" class="nav-link p-0">Home <span class="sr-only">(current)</span></a>
+                                </li>
+                                @if (Request.IsAuthenticated)
+                                {
+                                    if (User.IsInRole("Participant"))
+                                    {
+                                        <li class="nav-item g-mx-15--lg g-mb-7 g-mb-0--lg">
+                                            <a href="@Url.Action("ProfilesParticipant", "Participants")" class="nav-link p-0">Profil</a>
+                                        </li>
+                                        <li class="nav-item g-mx-15--lg g-mb-7 g-mb-0--lg">
+                                            <a href="@Url.Action("LogOff", "Account")" class="nav-link p-0">Logout</a>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li class="nav-item g-mx-15--lg g-mb-7 g-mb-0--lg">
+                                            <a href="@Url.Action("LogOff", "Account")" class="nav-link p-0">Logout</a>
+                                        </li>
+                                    }
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+                                }
+                                else
+                                {
+                                    <li class="nav-item g-mx-15--lg g-mb-7 g-mb-0--lg">
+                                        <a href="@Url.Action("Login", "Account")" class="nav-link p-0">Login</a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                        <button class="navbar-toggler btn g-line-height-1 g-brd-none g-pa-0 g-pos-abs g-top-15 g-right-0" type="button"
+                                aria-label="Toggle navigation"
+                                aria-expanded="false"
+                                aria-controls="navBar"
+                                data-toggle="collapse"
+                                data-target="#navBar">
+                            <span class="hamburger hamburger--slider">
+                                <span class="hamburger-box">
+                                    <span class="hamburger-inner">
+
+                                    </span>
+                                </span>
+                            </span>
+                        </button>
+                    </div>
+                </nav>
+            </div>
+
+        </header>
+        @RenderBody()
+
+        <footer style="background:#283042;" class=" g-color-white-opacity-0_8 g-py-20">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 d-flex align-items-center">
+                        <small class="d-block g-font-size-default g-mr-10 g-mb-0--md">
+                            © 2019 <a class="g-font-weight-700 g-color-white" href="#">Covid-19</a>
+                        </small>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="list-inline float-md-right mb-0">
+                            <li class="list-inline-item g-mr-10">
+                                <a class="u-icon-v3 g-width-35 g-height-35 g-font-size-16 g-color-gray-light-v3 g-color-gray-light-v4--hover g-bg-white-opacity-0_1 g-bg-primary--hover g-transition-0_2 g-transition--ease-in" href="#">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item g-mr-10">
+                                <a class="u-icon-v3 g-width-35 g-height-35 g-font-size-16 g-color-gray-light-v3 g-color-gray-light-v4--hover g-bg-white-opacity-0_1 g-bg-primary--hover g-transition-0_2 g-transition--ease-in" href="#">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="u-icon-v3 g-width-35 g-height-35 g-font-size-16 g-color-gray-light-v3 g-color-gray-light-v4--hover g-bg-white-opacity-0_1 g-bg-primary--hover g-transition-0_2 g-transition--ease-in" href="#">
+                                    <i class="fa fa-instagram"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="u-icon-v3 g-width-35 g-height-35 g-font-size-16 g-color-gray-light-v3 g-color-gray-light-v4--hover g-bg-white-opacity-0_1 g-bg-primary--hover g-transition-0_2 g-transition--ease-in" href="#">
+                                    <i class="fa fa-linkedin"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="u-icon-v3 g-width-35 g-height-35 g-font-size-16 g-color-gray-light-v3 g-color-gray-light-v4--hover g-bg-white-opacity-0_1 g-bg-primary--hover g-transition-0_2 g-transition--ease-in" href="#">
+                                    <i class="fa fa-youtube"></i>
+                                </a>
+                            </li>
+
+                            <li class="list-inline-item g-mr-10">
+                                <a class="u-icon-v3 g-width-35 g-height-35 g-font-size-16 g-color-gray-light-v3 g-color-gray-light-v4--hover g-bg-white-opacity-0_1 g-bg-primary--hover g-transition-0_2 g-transition--ease-in" href="#">
+                                    <i class="fa fa-globe"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <a class="js-go-to rounded-0 u-go-to-v1" href="#!"
+           data-type="fixed"
+           data-position='{
+           "bottom": 15,
+           "right": 15
+         }'
+           data-offset-top="400"
+           data-compensation="#js-header"
+           data-show-effect="zoomIn">
+            <i class="hs-icon hs-icon-arrow-top"></i>
+        </a>
+    </main>
+    <script src="~/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="~/assets/vendor/jquery-migrate/jquery-migrate.min.js"></script>
+    <script src="~/assets/vendor/popper.min.js"></script>
+    <script src="~/assets/vendor/bootstrap/bootstrap.min.js"></script>
+    <script src="~/assets/vendor/appear.js"></script>
+    <script src="~/assets/vendor/slick-carousel/slick/slick.js"></script>
+    <script src="~/assets/js/hs.core.js"></script>
+    <script src="~/assets/js/components/hs.header.js"></script>
+    <script src="~/assets/js/helpers/hs.hamburgers.js"></script>
+    <script src="~/assets/js/components/hs.carousel.js"></script>
+    <script src="~/assets/js/components/hs.go-to.js"></script>
+    <script src="~/assets/js/custom.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-app.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-messaging.js"></script>
+    <script>
+        $(document).on('ready', function () {
+            $.HSCore.components.HSCarousel.init('.js-carousel');
+            $.HSCore.components.HSHeader.init($('#js-header'));
+            $.HSCore.helpers.HSHamburgers.init('.hamburger');
+            $.HSCore.components.HSGoTo.init('.js-go-to');
+            $('.preloader').hide();
+        });
+
+        $(window).on('load', function () {
+
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+
+        });
+    </script>
     @RenderSection("scripts", required: false)
 </body>
 </html>
