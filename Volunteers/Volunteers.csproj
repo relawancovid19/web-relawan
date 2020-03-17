@@ -578,6 +578,8 @@
     <Content Include="assets\css\unify-core.css" />
     <Content Include="assets\css\unify-globals.css" />
     <Content Include="assets\css\unify.css" />
+    <Content Include="assets\images\backgrounds\banner1.jpg" />
+    <Content Include="assets\images\backgrounds\banner2.jpg" />
     <Content Include="assets\images\favicon\browserconfig.xml" />
     <Content Include="assets\images\icon\red.png" />
     <Content Include="assets\images\no-image.png" />
@@ -5605,7 +5607,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="assets\images\backgrounds\" />
     <Folder Include="assets\images\logo\" />
   </ItemGroup>
   <ItemGroup>
