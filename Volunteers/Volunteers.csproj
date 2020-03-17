@@ -195,7 +195,13 @@
     <Compile Include="Migrations\202003171024381_Initial.Designer.cs">
       <DependentUpon>202003171024381_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003171320367_JobTransactionV1.cs" />
+    <Compile Include="Migrations\202003171320367_JobTransactionV1.Designer.cs">
+      <DependentUpon>202003171320367_JobTransactionV1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Job.cs" />
+    <Compile Include="Models\Organization.cs" />
     <Compile Include="Models\Province.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -282,6 +288,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003171024381_Initial.resx">
       <DependentUpon>202003171024381_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003171320367_JobTransactionV1.resx">
+      <DependentUpon>202003171320367_JobTransactionV1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
