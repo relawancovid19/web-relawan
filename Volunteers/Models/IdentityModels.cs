@@ -23,7 +23,6 @@ namespace Volunteers.Models
         public string Address { get; set; }
         public DateTimeOffset Registered { get; set; }
         public DateTimeOffset Updated { get; set; }
-        public bool SubscribeNewsletter { get; set; }
         public bool IsBanned { get; set; }
         public virtual Province Province { get; set; }
         
