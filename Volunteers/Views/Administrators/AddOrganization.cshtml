@@ -1,0 +1,145 @@
+﻿@model Volunteers.ViewModels.AddOrganization
+@{
+    Layout = "~/Views/Shared/_LayoutAdministrators.cshtml";
+}
+
+<div class="row page-titles">
+    <div class="col-md-6 col-8 align-self-center">
+        <h3 class="text-themecolor m-b-0 m-t-0">Tambah Organisasi</h3>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="@Url.Action("Organizations")">Organisasi</a></li>
+            <li class="breadcrumb-item active">Tambah Organisasi</li>
+        </ol>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Organisasi</h4>
+                <h6 class="card-subtitle">Untuk menambahkan Organisasi silahkan isi form berikut</h6>
+                @using (Html.BeginForm("AddOrganization", "Administrators", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control", placeholder = "Nama Lengkap", required = "required" } })
+                                    @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    @Html.EditorFor(model => model.Institution, new { htmlAttributes = new { @class = "form-control", placeholder = "Institusi", required = "required" } })
+                                    @Html.ValidationMessageFor(model => model.Institution, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control", placeholder = "Jabatan", required = "required" } })
+                                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.DropDownList("Provinces", (IEnumerable<SelectListItem>)ViewBag.Provinces, "Pilih Provinsi", new
+                                {
+                                    @class = "form-control",
+                                    id = "Provinces",
+                                    style = "width:100%",
+                                    required = "required"
+                                })
+                                @Html.ValidationMessageFor(model => model.Province, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input class="form-control text-box single-line" data-val="true" data-val-remote="Email sudah digunakan" data-val-remote-additionalfields="*.Email" data-val-remote-type="POST" data-val-remote-url="/Hosts/IsEmailEoExists" data-val-required="Email tidak boleh kosong" id="Email" name="Email" type="text" value="" placeholder="Email" required="required" />
+                                <span class="field-validation-valid text-danger" data-valmsg-for="Email" data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group ">
+                                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Kata Sandi" } })
+                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group ">
+                                @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", placeholder = "Konfirmasi Kata Sandi" } })
+                                @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group ">
+                                @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control", placeholder = "Nomor Telepon", required = "required" } })
+                                @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.EditorFor(model => model.FacebookUrl, new { htmlAttributes = new { @class = "form-control", placeholder = "Facebook Url" } })
+                                @Html.ValidationMessageFor(model => model.FacebookUrl, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.EditorFor(model => model.InstagramUrl, new { htmlAttributes = new { @class = "form-control", placeholder = "Instagram Url" } })
+                                @Html.ValidationMessageFor(model => model.InstagramUrl, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group ">
+                                @Html.EditorFor(model => model.TwitterUrl, new { htmlAttributes = new { @class = "form-control", placeholder = "Twitter Url" } })
+                                @Html.ValidationMessageFor(model => model.TwitterUrl, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group ">
+                                @Html.EditorFor(model => model.LinkedInUrl, new { htmlAttributes = new { @class = "form-control", placeholder = "LinkedIn" } })
+                                @Html.ValidationMessageFor(model => model.LinkedInUrl, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group ">
+                                @Html.EditorFor(model => model.YoutubeUrl, new { htmlAttributes = new { @class = "form-control", placeholder = "YouTube Url" } })
+                                @Html.ValidationMessageFor(model => model.YoutubeUrl, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-success"> <i class="fa fa-save"></i> Simpan</button>
+                        @Html.ActionLink("Batal", "Organizations", null, new { @class = "btn btn-inverse" })
+                    </div>
+                }
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
