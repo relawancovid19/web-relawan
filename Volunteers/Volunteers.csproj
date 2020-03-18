@@ -5637,6 +5637,9 @@
     <Content Include="Views\Shared\_LayoutOrganizations.cshtml" />
     <Content Include="Views\Organizations\AddJob.cshtml" />
     <Content Include="Views\Jobs\Details.cshtml" />
+    <Content Include="Views\Organizations\Volunteers.cshtml" />
+    <Content Include="Views\Organizations\VolunteerJobs.cshtml" />
+    <Content Include="Views\Organizations\EditJob.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -8,6 +8,7 @@ namespace Volunteers.ViewModels
 {
     public class AddJob
     {
+        public string Id { get; set; }
         public string Title { get; set; }
         [AllowHtml]
         public string Descriptions { get; set; }

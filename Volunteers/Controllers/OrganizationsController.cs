@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
@@ -44,6 +46,61 @@ namespace Volunteers.Controllers
                     }
                 }
             }
+            return View();
+        }
+        public async Task<ActionResult> EditJob(string id)
+        {
+            var job = await repository.GetJob(id);
+            return View(job);
+        }
+        [HttpPost]
+        public async Task<ActionResult> EditJob(ViewModels.AddJob data)
+        {
+            var job = await db.Jobs.Where(x=>x.Id == data.Id).SingleOrDefaultAsync();
+            if(job != null)
+            {
+                DateTimeFormatInfo fmt = new CultureInfo("id-id").DateTimeFormat;
+                DateTimeOffset start = job.Start;
+                DateTimeOffset finish = job.Finish;
+
+                if(data.Start != null && data.Finish != null)
+                {
+                    start = DateTimeOffset.Parse(data.Start ?? job.Start.ToString(), fmt);
+                    finish = DateTimeOffset.Parse(data.Finish ?? job.Finish.ToString(), fmt);
+                }
+                
+
+                job.Title = data.Title ?? job.Title;
+                job.Location = data.Location ?? job.Location ;
+                job.Start = start;
+                job.Finish = finish;
+                job.Descriptions = data.Descriptions ?? job.Descriptions;
+                job.Banner = await Helpers.UploadFileHelper.UploadBannerImage(data.Banner) ?? job.Banner;
+            };
+            try
+            {
+                db.Entry(job).State = EntityState.Modified;
+                var result = await db.SaveChangesAsync();
+                if (result > 0)
+                {
+                    return RedirectToAction("Jobs");
+                }
+            }
+            catch (Exception ex)
+            {
+                Trace.TraceError(ex.Message);
+                Trace.TraceError(ex.StackTrace);
+            }
+            return View(job);
+        }
+
+        public async Task<ActionResult> Volunteers()
+        {
+            return View();
+        }
+
+        public async Task<ActionResult> VolunteerJobs(string id)
+        {
             return View();
         }
     }
