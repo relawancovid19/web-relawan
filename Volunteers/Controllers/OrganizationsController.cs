@@ -105,5 +105,15 @@ namespace Volunteers.Controllers
             var volunteers = await db.JobTransactions.Include("Volunteer").Where(x => x.Job.Id == id).ToListAsync();
             return View(volunteers);
         }
+
+        public async Task<ActionResult> DetailVolunteer(string id)
+        {
+            var volunteer = await db.Users.Where(x => x.Id == id).SingleOrDefaultAsync();
+            if(volunteer != null)
+            {
+                return View(volunteer);
+            }
+            return View("Error");
+        }
     }
 }
