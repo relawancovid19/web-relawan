@@ -216,7 +216,12 @@
     <Compile Include="Migrations\202003171631337_Job_v1.Designer.cs">
       <DependentUpon>202003171631337_Job_v1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003181845181_EmailTempalate_v1.cs" />
+    <Compile Include="Migrations\202003181845181_EmailTempalate_v1.Designer.cs">
+      <DependentUpon>202003181845181_EmailTempalate_v1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\EmailTemplate.cs" />
     <Compile Include="Models\Job.cs" />
     <Compile Include="Models\Organization.cs" />
     <Compile Include="Models\Province.cs" />
@@ -5672,6 +5677,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003171631337_Job_v1.resx">
       <DependentUpon>202003171631337_Job_v1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003181845181_EmailTempalate_v1.resx">
+      <DependentUpon>202003181845181_EmailTempalate_v1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
