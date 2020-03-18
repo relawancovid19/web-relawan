@@ -26,6 +26,7 @@
                         <th>Institusi</th>
                         <th>Jabatan</th>
                         <th>Status</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -38,6 +39,7 @@
                             <td>@item.Volunteer.Institution</td>
                             <td>@item.Volunteer.Title</td>
                             <td>@item.Status.ToString()</td>
+                            <td><a href="@Url.Action("DetailVolunteer", new { id = @item.IdTransaction })">Detail</a></td>
                         </tr>
                     }
                 </tbody>
