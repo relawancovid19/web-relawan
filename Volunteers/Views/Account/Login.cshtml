@@ -2,61 +2,183 @@
 @model LoginViewModel
 @{
     ViewBag.Title = "Log in";
+    Layout = null;
 }
 
-<h2>@ViewBag.Title.</h2>
-<div class="row">
-    <div class="col-md-8">
-        <section id="loginForm">
-            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-            {
-                @Html.AntiForgeryToken()
-                <h4>Use a local account to log in.</h4>
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <div class="checkbox">
-                            @Html.CheckBoxFor(m => m.RememberMe)
-                            @Html.LabelFor(m => m.RememberMe)
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Title -->
+    <title>Relawan Covid-19</title>
+
+    <!-- Required Meta Tags Always Come First -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans%3A400%2C300%2C500%2C600%2C700%7CPlayfair+Display%7CRoboto%7CRaleway%7CSpectral%7CRubik">
+    <!-- CSS Global Compulsory -->
+    <link rel="stylesheet" href="~/assets/vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="~/assets/vendor/icon-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/assets/vendor/icon-line-pro/style.css">
+    <link rel="stylesheet" href="~/assets/vendor/animate.css">
+
+    <!-- CSS Unify -->
+    <link rel="stylesheet" href="~/assets/css/unify-core.css">
+    <link rel="stylesheet" href="~/assets/css/unify-components.css">
+    <link rel="stylesheet" href="~/assets/css/unify-globals.css">
+
+    <!-- CSS Customization -->
+    <link rel="stylesheet" href="~/assets/css/custom.css">
+</head>
+
+<body>
+    <main>
+        <!-- Login -->
+        <section class="g-min-height-100vh g-flex-centered" style="background-image:url(/assets/images/backgrounds/background.jpg);">
+            <div class="container g-py-100">
+                <div class="row justify-content-center">
+                    <div class="col-sm-8 col-lg-5">
+                        <div class="u-shadow-v24 g-bg-white rounded g-py-40 g-px-30">
+                            <header class="text-center mb-4">
+                                <h2 class="h2 g-color-black g-font-weight-600">Daftar atau Masuk</h2>
+                            </header>
+
+                            <!-- Form -->
+                            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "g-py-15", role = "form" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="mb-4">
+                                    <div class="input-group g-brd-primary--focus">
+                                        <span class="input-group-addon g-width-45 g-brd-gray-light-v4 g-color-gray-dark-v5">
+                                            <i class="icon-communication-005 u-line-icon-pro"></i>
+                                        </span>
+                                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control g-color-black g-bg-white g-brd-gray-light-v4 g-py-15 g-px-15", placeholder = "Masukkan Alamat Email" })
+                                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="g-mb-25">
+                                    <div class="input-group g-brd-primary--focus mb-4">
+                                        <span class="input-group-addon g-width-45 g-brd-gray-light-v4 g-color-gray-dark-v5">
+                                            <i class="icon-media-094 u-line-icon-pro"></i>
+                                        </span>
+                                        @Html.PasswordFor(m => m.Password, new { @class = "form-control g-color-black g-bg-white g-brd-gray-light-v4 g-py-15 g-px-15", placeholder = "Masukkan Kata Sandi" })
+                                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                    </div>
+
+                                    <div class="row justify-content-between">
+                                        @*<div class="form-group col align-self-center">
+                                            <label class="form-check-inline u-check g-color-gray-dark-v5 g-font-size-12 g-pl-25 mb-0">
+                                                <input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox">
+                                                <div class="u-check-icon-checkbox-v6 g-absolute-centered--y g-left-0">
+                                                    @Html.CheckBoxFor(m => m.RememberMe, new { @class = "u-check-icon-checkbox-v6 g-absolute-centered--y g-left-0" })
+                                                    <i class="fa g-rounded-2" data-check-icon=""></i>
+                                                </div>
+                                                Keep signed in
+                                            </label>
+                                        </div>*@
+                                        <div class="col align-self-center text-right">
+                                            <a class="g-font-size-14" href="@Url.Action("ForgotPassword", "Account")"><i class="fa fa-lock m-r-5"></i> Lupa Kata Sandi?</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <button class="btn btn-md btn-block u-btn-primary g-py-12 g-font-size-16" type="button">Masuk</button>
+                                </div>
+                            }
+                            <!-- End Form -->
+
+                            <footer class="text-center">
+                                <p class="g-color-gray-dark-v5 g-font-size-14 mb-0">
+                                    Tidak punya akun? <a class="g-font-weight-600" href="@Url.Action("Register", "Account")">Buat Akun</a>
+                                </p>
+                            </footer>
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Log in" class="btn btn-default" />
+            </div>
+        </section>
+        <!-- End Login -->
+    </main>
+
+    <div class="u-outer-spaces-helper"></div>
+
+
+    <!-- JS Global Compulsory -->
+    <script src="~/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="~/assets/vendor/jquery-migrate/jquery-migrate.min.js"></script>
+    <script src="~/assets/vendor/jquery.easing/js/jquery.easing.js"></script>
+    <script src="~/assets/vendor/popper.min.js"></script>
+    <script src="~/assets/vendor/bootstrap/bootstrap.min.js"></script>
+
+    <!-- JS Unify -->
+    <script src="~/assets/js/hs.core.js"></script>
+
+    <!-- JS Customization -->
+    <script src="~/assets/js/custom.js"></script>
+</body>
+
+</html>
+
+
+
+@*<h2>@ViewBag.Title.</h2>
+    <div class="row">
+        <div class="col-md-8">
+            <section id="loginForm">
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <h4>Use a local account to log in.</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        </div>
                     </div>
-                </div>
-                <p>
-                    @Html.ActionLink("Register as a new user", "Register")
-                </p>
-                @* Enable this once you have account confirmation enabled for password reset functionality
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <div class="checkbox">
+                                @Html.CheckBoxFor(m => m.RememberMe)
+                                @Html.LabelFor(m => m.RememberMe)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Log in" class="btn btn-default" />
+                        </div>
+                    </div>
                     <p>
-                        @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                    </p>*@
-            }
-        </section>
-    </div>
-    <div class="col-md-4">
-        <section id="socialLoginForm">
-            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-        </section>
-    </div>
-</div>
+                        @Html.ActionLink("Register as a new user", "Register")
+                    </p>
+                }
+            </section>
+        </div>
+        <div class="col-md-4">
+            <section id="socialLoginForm">
+                @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+            </section>
+        </div>
+    </div>*@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

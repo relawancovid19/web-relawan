@@ -21,5 +21,7 @@ namespace Volunteers.Infrastructures
         }
         public DbSet<Job> Jobs { get; set; }
         public DbSet<JobTransaction> JobTransactions { get; set; }
+        public DbSet<Organization> Organizations { get; set; }
+        public DbSet<Province> Provinces { get; set; }
     }
 }
