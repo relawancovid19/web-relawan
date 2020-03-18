@@ -583,6 +583,7 @@
     <Content Include="assets\css\unify-core.css" />
     <Content Include="assets\css\unify-globals.css" />
     <Content Include="assets\css\unify.css" />
+    <Content Include="assets\images\backgrounds\background.jpg" />
     <Content Include="assets\images\backgrounds\banner1.jpg" />
     <Content Include="assets\images\backgrounds\banner2.jpg" />
     <Content Include="assets\images\favicon\browserconfig.xml" />
