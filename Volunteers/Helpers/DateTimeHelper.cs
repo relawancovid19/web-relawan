@@ -49,8 +49,7 @@ namespace Volunteers.Helpers
         }
         public static string GetTime(DateTimeOffset datetime)
         {
-            var timezone = GetLocalTimezone(datetime.Offset.Hours);
-            return datetime.ToString("HH:mm " + timezone);
+            return datetime.ToString("HH:mm ");
         }
     }
 }

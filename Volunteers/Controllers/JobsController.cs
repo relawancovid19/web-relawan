@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -16,6 +17,14 @@ namespace Volunteers.Controllers
         {
             if (id != null)
             {
+                var province = await db.Provinces
+                         .Select(i => new SelectListItem()
+                         {
+                             Text = i.Name,
+                             Value = i.IdProvince,
+                             Selected = false
+                         }).ToArrayAsync();
+                ViewBag.Provinces = province;
                 var details = await repository.GetDetails(id);
                 if (details != null)
                 {

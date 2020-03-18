@@ -12,7 +12,7 @@
                     <header class="g-mb-30">
                         <h2 class="h1 g-mb-15">@Model.Title</h2>
 
-                        <ul class="list-inline d-sm-flex g-color-gray-dark-v4 mb-0">
+                        <ul class="list-inline d-sm-flex g-color-gray-dark-v4 mb-2">
                             <li class="list-inline-item">
                                 <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#">
                                     @Model.Organization.FullName
@@ -24,19 +24,21 @@
                                 {
                                     <span> @Volunteers.Helpers.DateTimeHelper.GetLocalDay(Model.Start), @Volunteers.Helpers.DateTimeHelper.GetLocalDate(Model.Start), @Volunteers.Helpers.DateTimeHelper.GetTime(Model.Start) - @Volunteers.Helpers.DateTimeHelper.GetLocalTime(Model.Finish)</span>
                                 }
-                                else if (Model.Start.Month == Model.Finish.Month && Model.Start.Year == Model.Finish.Year)
+                                else
                                 {
-                            <span> @Volunteers.Helpers.DateTimeHelper.GetTime(Model.Start) - @Volunteers.Helpers.DateTimeHelper.GetLocalDay(Model.Finish)</span>
+                                    <span>@Volunteers.Helpers.DateTimeHelper.GetLocalDay(Model.Start), @Volunteers.Helpers.DateTimeHelper.GetLocalDate(Model.Start), @Volunteers.Helpers.DateTimeHelper.GetLocalTime(Model.Start) - @Volunteers.Helpers.DateTimeHelper.GetLocalDay(Model.Finish), @Volunteers.Helpers.DateTimeHelper.GetLocalDate(Model.Finish) @Volunteers.Helpers.DateTimeHelper.GetLocalTime(Model.Finish)</span>
                                 }
-
-
-
                             </li>
-
-
                         </ul>
-
+                        <div class="media g-font-size-14">
+                            <i class="icon-location-pin g-mr-2 g-pt-4"></i>
+                            <div class="media-body align-self-center">
+                                <span class="u-link-v5 g-color-gray-dark-v5">@Model.Location</span>
+                            </div>
+                        </div>
                         <hr class="g-brd-gray-light-v4 g-my-15">
+
+
 
                     </header>
 
@@ -46,6 +48,7 @@
                                  src="@Model.Banner"
                                  alt="Banner">
                         </figure>
+
                         @Html.Raw(HttpUtility.HtmlDecode(Model.Descriptions))
                     </div>
                 </article>
@@ -57,57 +60,69 @@
             <div class="col-lg-3">
                 <!-- Useful Links -->
                 <div class="g-mb-50">
-                    <div class="u-heading-v3-1 g-mb-30">
-                        <h2 class="h5 u-heading-v3__title g-color-gray-dark-v1 text-uppercase g-brd-primary">Useful Links</h2>
-                    </div>
-
-                    <ul class="list-unstyled">
-                        <li class="g-brd-bottom g-brd-gray-light-v4 g-pb-10 g-mb-12">
-                            <h4 class="h6">
-                                <i class="fa fa-angle-right g-color-gray-dark-v5 g-mr-5"></i>
-                                <a class="u-link-v5 g-color-gray-dark-v1 g-color-primary--hover" href="#">Wrapbootstrap Marketplace</a>
-                            </h4>
-                        </li>
-                        <li class="g-brd-bottom g-brd-gray-light-v4 g-pb-10 g-mb-12">
-                            <h4 class="h6">
-                                <i class="fa fa-angle-right g-color-gray-dark-v5 g-mr-5"></i>
-                                <a class="u-link-v5 g-color-gray-dark-v1 g-color-primary--hover" href="#">Google Adwords &amp; Adsense</a>
-                            </h4>
-                        </li>
-                        <li class="g-brd-bottom g-brd-gray-light-v4 g-pb-10 g-mb-12">
-                            <h4 class="h6">
-                                <i class="fa fa-angle-right g-color-gray-dark-v5 g-mr-5"></i>
-                                <a class="u-link-v5 g-color-gray-dark-v1 g-color-primary--hover" href="#">Web Design with UX/UI</a>
-                            </h4>
-                        </li>
-                        <li class="g-brd-bottom g-brd-gray-light-v4 g-pb-10 g-mb-12">
-                            <h4 class="h6">
-                                <i class="fa fa-angle-right g-color-gray-dark-v5 g-mr-5"></i>
-                                <a class="u-link-v5 g-color-gray-dark-v1 g-color-primary--hover" href="#">Digital Marketing</a>
-                            </h4>
-                        </li>
-                        <li class="g-brd-bottom g-brd-gray-light-v4 g-pb-10 g-mb-12">
-                            <h4 class="h6">
-                                <i class="fa fa-angle-right g-color-gray-dark-v5 g-mr-5"></i>
-                                <a class="u-link-v5 g-color-gray-dark-v1 g-color-primary--hover" href="#">Support Forum &amp; Community</a>
-                            </h4>
-                        </li>
-                        <li class="mb-0">
-                            <h4 class="h6">
-                                <i class="fa fa-angle-right g-color-gray-dark-v5 g-mr-5"></i>
-                                <a class="u-link-v5 g-color-gray-dark-v1 g-color-primary--hover" href="#">Unify Template Pages</a>
-                            </h4>
-                        </li>
-                    </ul>
+                    <button class="btn btn-lg btn-primary" type="submit">Bantu Sekarang</button>
                 </div>
-                <!-- End Useful Links -->
-                <!-- Subscribe -->
-
-
-
-
-
             </div>
+            <hr />
+            <section id="contact">
+                <div class="container g-pt-100 g-pb-130">
+                    <!-- Icon Blocks -->
+                    <div class="container">
+                        <div class="u-heading-v8-2 g-mb-60">
+                            <h2 class="h1 text-uppercase u-heading-v8__title g-font-weight-700 g-font-size-26 g-font-secondary g-color-main g-mb-25">Belum Punya Akun?</h2>
+                            <p class="mb-0">Silahkan melengkapi formulir di bawah ini</p>
+                        </div>
+
+                        <form id="SendingMail" method="post">
+                            <div class="row">
+                                <div class="col-md-6 form-group g-mb-30">
+                                    <input id="inputGroup1_1" class="form-control u-shadow-v25 h-100 g-font-size-default g-theme-color-gray-dark-v2 g-placeholder-inherit g-bg-white g-bg-white--focus g-brd-white g-brd-gray-light-v3--hover g-brd-gray-light-v3--focus g-rounded-1 g-py-13 g-px-12 g-transition-0_2 g-transition--ease-in" type="text" name="Name" placeholder="Nama" required="required">
+                                </div>
+
+                                <div class="col-md-6 form-group g-mb-30">
+                                    <input id="inputGroup1_2" class="u-shadow-v25 form-control h-100 g-font-size-default g-theme-color-gray-dark-v2 g-placeholder-inherit g-bg-white g-bg-white--focus g-brd-white g-brd-gray-light-v3--hover g-brd-gray-light-v3--focus g-rounded-1 g-py-13 g-px-12 g-transition-0_2 g-transition--ease-in" type="text" name="Email" placeholder="Email" required="required">
+                                </div>
+
+                                <div class="col-md-6 form-group g-mb-30">
+                                    <input id="inputGroup1_2" class="u-shadow-v25 form-control h-100 g-font-size-default g-theme-color-gray-dark-v2 g-placeholder-inherit g-bg-white g-bg-white--focus g-brd-white g-brd-gray-light-v3--hover g-brd-gray-light-v3--focus g-rounded-1 g-py-13 g-px-12 g-transition-0_2 g-transition--ease-in" type="password" name="Password" placeholder="Kata Sandi" required="required">
+                                </div>
+
+                                <div class="col-md-6 form-group g-mb-30">
+                                    <input id="inputGroup1_2" class="u-shadow-v25 form-control h-100 g-font-size-default g-theme-color-gray-dark-v2 g-placeholder-inherit g-bg-white g-bg-white--focus g-brd-white g-brd-gray-light-v3--hover g-brd-gray-light-v3--focus g-rounded-1 g-py-13 g-px-12 g-transition-0_2 g-transition--ease-in" type="password" name="ConfirmPassword" placeholder="Konfirmasi Kata Sandi" required="required">
+                                </div>
+
+                                <div class="col-md-6 form-group g-mb-30">
+                                    <input id="inputGroup1_4" class="form-control u-shadow-v25 h-100 g-font-size-default g-theme-color-gray-dark-v2 g-placeholder-inherit g-bg-white g-bg-white--focus g-brd-white g-brd-gray-light-v3--hover g-brd-gray-light-v3--focus g-rounded-1 g-py-13 g-px-12 g-transition-0_2 g-transition--ease-in" type="text" name="PhoneNumber" placeholder="Nomor Telepon" required="required">
+                                </div>
+
+                                <div class="col-md-6 form-group g-mb-30">
+                                    <input id="inputGroup1_4" class="form-control u-shadow-v25 h-100 g-font-size-default g-theme-color-gray-dark-v2 g-placeholder-inherit g-bg-white g-bg-white--focus g-brd-white g-brd-gray-light-v3--hover g-brd-gray-light-v3--focus g-rounded-1 g-py-13 g-px-12 g-transition-0_2 g-transition--ease-in" type="text" name="Title" placeholder="Jabatan" required="required">
+                                </div>
+
+                                <div class="col-md-6 form-group g-mb-30">
+                                    <input id="inputGroup1_2" class="form-control u-shadow-v25 h-100 g-font-size-default g-theme-color-gray-dark-v2 g-placeholder-inherit g-bg-white g-bg-white--focus g-brd-white g-brd-gray-light-v3--hover g-brd-gray-light-v3--focus g-rounded-1 g-py-13 g-px-12 g-transition-0_2 g-transition--ease-in" type="text" name="Institution" placeholder="Institusi" required="required">
+                                </div>
+
+                                @Html.DropDownList("Province", (IEnumerable<SelectListItem>)ViewBag.Provinces, "Pilih Provinsi", new
+                                        {
+                                            @class = "col-md-6 form-group g-mb-30",
+                                            id = "Province",
+                                            style = "width:100%"
+                                        })
+
+                                <div class="col-md-12 form-group g-mb-30">
+                                    <textarea id="inputGroup1_5" class="form-control u-shadow-v25 g-resize-none g-font-size-default g-theme-color-gray-dark-v2 g-placeholder-inherit g-bg-white g-bg-white--focus g-brd-white g-brd-gray-light-v3--hover g-brd-gray-light-v3--focus g-rounded-1 g-py-13 g-px-12 g-transition-0_2 g-transition--ease-in" rows="6" name="Message" placeholder="Deskripsi" required="required"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="text-center">
+                                <button class="btn u-btn-primary btn-md text-uppercase g-font-weight-700 g-font-size-12 rounded-0 g-px-25 g-py-10 mb-0" type="submit" role="button">Daftar</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- End Icon Blocks -->
+                </div>
+            </section>
             <!-- End Sidebar -->
         </div>
     </div>
