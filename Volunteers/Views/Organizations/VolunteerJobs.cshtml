@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Volunteers.Models.ApplicationUser>
+﻿@model IEnumerable<Volunteers.Models.JobTransaction>
 @{
     Layout = "~/Views/Shared/_LayoutOrganizations.cshtml";
 }
@@ -25,27 +25,21 @@
                         <th>Telepon</th>
                         <th>Institusi</th>
                         <th>Jabatan</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Bukhori Arkan</td>
-                        <td>bukharkan@hotmail.com</td>
-                        <td>081281831</td>
-                        <td>STMIK BaniSaleh Bekasi</td>
-                        <td>Mahasiswa</td>
-                    </tr>
-                    @*@foreach (var item in Model)
-                        {
-                            <tr>
-                                <td>@item.FullName</td>
-                                <td>@item.Email</td>
-                                <td>@item.PhoneNumber</td>
-                                <td>@item.Institution</td>
-                                <td>@item.Title</td>
-                            </tr>
-                        }*@
-
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Volunteer.FullName</td>
+                            <td>@item.Volunteer.Email</td>
+                            <td>@item.Volunteer.PhoneNumber</td>
+                            <td>@item.Volunteer.Institution</td>
+                            <td>@item.Volunteer.Title</td>
+                            <td>@item.Status.ToString()</td>
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>

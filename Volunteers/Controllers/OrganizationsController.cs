@@ -96,12 +96,14 @@ namespace Volunteers.Controllers
 
         public async Task<ActionResult> Volunteers()
         {
-            return View();
+            var volunteers = await db.JobTransactions.Include("Volunteer").Where(x => x.Job.Organization.UserName == User.Identity.Name).ToListAsync();
+            return View(volunteers);
         }
 
         public async Task<ActionResult> VolunteerJobs(string id)
         {
-            return View();
+            var volunteers = await db.JobTransactions.Include("Volunteer").Where(x => x.Job.Id == id).ToListAsync();
+            return View(volunteers);
         }
     }
 }

@@ -55,69 +55,86 @@
 
                 <div id="stickyblock-end"></div>
             </div>
-            <!-- End Articles Content -->
-            <!-- Sidebar -->
-            <div class="col-lg-3">
-                <!-- Useful Links -->
-                <div class="g-mb-50">
-                    <button class="btn btn-lg btn-primary" type="submit">Bantu Sekarang</button>
-                </div>
-            </div>
             <hr />
             <section id="contact">
-                <div class="container g-pt-100 g-pb-130">
+                <div class="container">
                     <!-- Icon Blocks -->
                     <div class="container">
-                        <div class="u-heading-v8-2 g-mb-60">
-                            <h2 class="h1 text-uppercase u-heading-v8__title g-font-weight-700 g-font-size-26 g-font-secondary g-color-main g-mb-25">Belum Punya Akun?</h2>
-                            <p class="mb-0">Silahkan melengkapi formulir di bawah ini</p>
+                        <div class="u-heading-v8-2 g-mb-30">
+                            <h2 class="h1 text-uppercase u-heading-v8__title g-font-weight-700 g-font-size-26 g-font-secondary g-color-main">Ingin Mendaftar Relawan?</h2>
+                            <p class="mb-0">Daftar Segera !</p>
                         </div>
 
-                        <form id="SendingMail" method="post">
-                            <div class="row">
-                                <div class="col-md-6 form-group g-mb-30">
-                                    <input id="inputGroup1_1" class="form-control u-shadow-v25 h-100 g-font-size-default g-theme-color-gray-dark-v2 g-placeholder-inherit g-bg-white g-bg-white--focus g-brd-white g-brd-gray-light-v3--hover g-brd-gray-light-v3--focus g-rounded-1 g-py-13 g-px-12 g-transition-0_2 g-transition--ease-in" type="text" name="Name" placeholder="Nama" required="required">
+                        <form id="registrationForm" method="post">
+                            <input type="hidden" name="Id" value="@Model.Id" />
+                            @if (!User.Identity.IsAuthenticated)
+                            {
+                                <div class="row">
+                                    <div class="col-md-6 form-group g-mb-30">
+                                        <input id="inputGroup1_1" class="form-control u-shadow-v25 h-100 g-font-size-default g-theme-color-gray-dark-v2 g-placeholder-inherit g-bg-white g-bg-white--focus g-brd-white g-brd-gray-light-v3--hover g-brd-gray-light-v3--focus g-rounded-1 g-py-13 g-px-12 g-transition-0_2 g-transition--ease-in" type="text" name="Name" placeholder="Nama" required="required">
+                                    </div>
+
+                                    <div class="col-md-6 form-group g-mb-30">
+                                        <input id="inputGroup1_2" class="u-shadow-v25 form-control h-100 g-font-size-default g-theme-color-gray-dark-v2 g-placeholder-inherit g-bg-white g-bg-white--focus g-brd-white g-brd-gray-light-v3--hover g-brd-gray-light-v3--focus g-rounded-1 g-py-13 g-px-12 g-transition-0_2 g-transition--ease-in" type="text" name="Email" placeholder="Email" required="required">
+                                    </div>
+
+                                    <div class="col-md-6 form-group g-mb-30">
+                                        <input id="inputGroup1_2" class="u-shadow-v25 form-control h-100 g-font-size-default g-theme-color-gray-dark-v2 g-placeholder-inherit g-bg-white g-bg-white--focus g-brd-white g-brd-gray-light-v3--hover g-brd-gray-light-v3--focus g-rounded-1 g-py-13 g-px-12 g-transition-0_2 g-transition--ease-in" type="password" name="Password" placeholder="Kata Sandi" required="required">
+                                    </div>
+
+                                    <div class="col-md-6 form-group g-mb-30">
+                                        <input id="inputGroup1_2" class="u-shadow-v25 form-control h-100 g-font-size-default g-theme-color-gray-dark-v2 g-placeholder-inherit g-bg-white g-bg-white--focus g-brd-white g-brd-gray-light-v3--hover g-brd-gray-light-v3--focus g-rounded-1 g-py-13 g-px-12 g-transition-0_2 g-transition--ease-in" type="password" name="ConfirmPassword" placeholder="Konfirmasi Kata Sandi" required="required">
+                                    </div>
+
+                                    <div class="col-md-6 form-group g-mb-30">
+                                        <input id="inputGroup1_4" class="form-control u-shadow-v25 h-100 g-font-size-default g-theme-color-gray-dark-v2 g-placeholder-inherit g-bg-white g-bg-white--focus g-brd-white g-brd-gray-light-v3--hover g-brd-gray-light-v3--focus g-rounded-1 g-py-13 g-px-12 g-transition-0_2 g-transition--ease-in" type="text" name="PhoneNumber" placeholder="Nomor Telepon" required="required">
+                                    </div>
+
+                                    <div class="col-md-6 form-group g-mb-30">
+                                        <input id="inputGroup1_4" class="form-control u-shadow-v25 h-100 g-font-size-default g-theme-color-gray-dark-v2 g-placeholder-inherit g-bg-white g-bg-white--focus g-brd-white g-brd-gray-light-v3--hover g-brd-gray-light-v3--focus g-rounded-1 g-py-13 g-px-12 g-transition-0_2 g-transition--ease-in" type="text" name="Title" placeholder="Jabatan" required="required">
+                                    </div>
+
+                                    <div class="col-md-6 form-group g-mb-30">
+                                        <input id="inputGroup1_2" class="form-control u-shadow-v25 h-100 g-font-size-default g-theme-color-gray-dark-v2 g-placeholder-inherit g-bg-white g-bg-white--focus g-brd-white g-brd-gray-light-v3--hover g-brd-gray-light-v3--focus g-rounded-1 g-py-13 g-px-12 g-transition-0_2 g-transition--ease-in" type="text" name="Institution" placeholder="Institusi" required="required">
+                                    </div>
+
+                                    @Html.DropDownList("Province", (IEnumerable<SelectListItem>)ViewBag.Provinces, "Pilih Provinsi", new
+                                            {
+                                                @class = "col-md-6 form-group g-mb-30",
+                                                id = "Province",
+                                                style = "width:100%"
+                                            })
+
+                                    <div class="col-md-12 form-group g-mb-30">
+                                        <textarea id="inputGroup1_5" class="form-control u-shadow-v25 g-resize-none g-font-size-default g-theme-color-gray-dark-v2 g-placeholder-inherit g-bg-white g-bg-white--focus g-brd-white g-brd-gray-light-v3--hover g-brd-gray-light-v3--focus g-rounded-1 g-py-13 g-px-12 g-transition-0_2 g-transition--ease-in" rows="6" name="Message" placeholder="Deskripsi" required="required"></textarea>
+                                    </div>
                                 </div>
-
-                                <div class="col-md-6 form-group g-mb-30">
-                                    <input id="inputGroup1_2" class="u-shadow-v25 form-control h-100 g-font-size-default g-theme-color-gray-dark-v2 g-placeholder-inherit g-bg-white g-bg-white--focus g-brd-white g-brd-gray-light-v3--hover g-brd-gray-light-v3--focus g-rounded-1 g-py-13 g-px-12 g-transition-0_2 g-transition--ease-in" type="text" name="Email" placeholder="Email" required="required">
+                            }
+                            @if (ViewBag.Status == "Pending")
+                            {
+                                <div class="text-center">
+                                    <button class="btn u-btn-primary btn-md text-uppercase g-font-weight-700 g-font-size-12 rounded-0 g-px-25 g-py-10 mb-0" type="button" role="button">Terimakasih Sudah Mendaftar, status sekarang menunggu persetujuan admin</button>
                                 </div>
-
-                                <div class="col-md-6 form-group g-mb-30">
-                                    <input id="inputGroup1_2" class="u-shadow-v25 form-control h-100 g-font-size-default g-theme-color-gray-dark-v2 g-placeholder-inherit g-bg-white g-bg-white--focus g-brd-white g-brd-gray-light-v3--hover g-brd-gray-light-v3--focus g-rounded-1 g-py-13 g-px-12 g-transition-0_2 g-transition--ease-in" type="password" name="Password" placeholder="Kata Sandi" required="required">
+                            }
+                            else if (ViewBag.Status == "Approved")
+                            {
+                                <div class="text-center">
+                                    <button class="btn u-btn-primary btn-md text-uppercase g-font-weight-700 g-font-size-12 rounded-0 g-px-25 g-py-10 mb-0" type="button" role="button">Terimakasih sudah ikut berperan sebagai relawan</button>
                                 </div>
-
-                                <div class="col-md-6 form-group g-mb-30">
-                                    <input id="inputGroup1_2" class="u-shadow-v25 form-control h-100 g-font-size-default g-theme-color-gray-dark-v2 g-placeholder-inherit g-bg-white g-bg-white--focus g-brd-white g-brd-gray-light-v3--hover g-brd-gray-light-v3--focus g-rounded-1 g-py-13 g-px-12 g-transition-0_2 g-transition--ease-in" type="password" name="ConfirmPassword" placeholder="Konfirmasi Kata Sandi" required="required">
+                            }
+                            else if (ViewBag.Status == "Rejected")
+                            {
+                                <div class="text-center">
+                                    <button class="btn u-btn-primary btn-md text-uppercase g-font-weight-700 g-font-size-12 rounded-0 g-px-25 g-py-10 mb-0" type="button" role="button">Mohon maaf kriteria kamu kurang cocok untuk pekerjaan ini mungkin coba lagi nanti</button>
                                 </div>
-
-                                <div class="col-md-6 form-group g-mb-30">
-                                    <input id="inputGroup1_4" class="form-control u-shadow-v25 h-100 g-font-size-default g-theme-color-gray-dark-v2 g-placeholder-inherit g-bg-white g-bg-white--focus g-brd-white g-brd-gray-light-v3--hover g-brd-gray-light-v3--focus g-rounded-1 g-py-13 g-px-12 g-transition-0_2 g-transition--ease-in" type="text" name="PhoneNumber" placeholder="Nomor Telepon" required="required">
+                            }
+                            else
+                            {
+                                <div class="text-center">
+                                    <button class="btn u-btn-primary btn-md text-uppercase g-font-weight-700 g-font-size-12 rounded-0 g-px-25 g-py-10 mb-0" type="submit" role="button">Daftar Sekarang</button>
                                 </div>
+                            }
 
-                                <div class="col-md-6 form-group g-mb-30">
-                                    <input id="inputGroup1_4" class="form-control u-shadow-v25 h-100 g-font-size-default g-theme-color-gray-dark-v2 g-placeholder-inherit g-bg-white g-bg-white--focus g-brd-white g-brd-gray-light-v3--hover g-brd-gray-light-v3--focus g-rounded-1 g-py-13 g-px-12 g-transition-0_2 g-transition--ease-in" type="text" name="Title" placeholder="Jabatan" required="required">
-                                </div>
-
-                                <div class="col-md-6 form-group g-mb-30">
-                                    <input id="inputGroup1_2" class="form-control u-shadow-v25 h-100 g-font-size-default g-theme-color-gray-dark-v2 g-placeholder-inherit g-bg-white g-bg-white--focus g-brd-white g-brd-gray-light-v3--hover g-brd-gray-light-v3--focus g-rounded-1 g-py-13 g-px-12 g-transition-0_2 g-transition--ease-in" type="text" name="Institution" placeholder="Institusi" required="required">
-                                </div>
-
-                                @Html.DropDownList("Province", (IEnumerable<SelectListItem>)ViewBag.Provinces, "Pilih Provinsi", new
-                                        {
-                                            @class = "col-md-6 form-group g-mb-30",
-                                            id = "Province",
-                                            style = "width:100%"
-                                        })
-
-                                <div class="col-md-12 form-group g-mb-30">
-                                    <textarea id="inputGroup1_5" class="form-control u-shadow-v25 g-resize-none g-font-size-default g-theme-color-gray-dark-v2 g-placeholder-inherit g-bg-white g-bg-white--focus g-brd-white g-brd-gray-light-v3--hover g-brd-gray-light-v3--focus g-rounded-1 g-py-13 g-px-12 g-transition-0_2 g-transition--ease-in" rows="6" name="Message" placeholder="Deskripsi" required="required"></textarea>
-                                </div>
-                            </div>
-
-                            <div class="text-center">
-                                <button class="btn u-btn-primary btn-md text-uppercase g-font-weight-700 g-font-size-12 rounded-0 g-px-25 g-py-10 mb-0" type="submit" role="button">Daftar</button>
-                            </div>
                         </form>
                     </div>
                     <!-- End Icon Blocks -->
@@ -129,3 +146,86 @@
 
 </section>
 
+@section styles
+{
+    <link href="~/assets/vendor/sweetalert/sweetalert.css" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" href="~/assets/vendor/icon-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/assets/vendor/icon-line/css/simple-line-icons.css">
+}
+@section Scripts{
+    <script src="~/assets/vendor/sweetalert/sweetalert.min.js"></script>
+    <script src="~/assets/js/components/hs.tabs.js"></script>>
+    <script>
+        $(document).ready(function () {
+            $("#registrationForm").submit(function (e) {
+                e.preventDefault()
+                $('#loading').fadeIn();
+                var data = $(this).serialize();
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("Apply", "Jobs")',
+                    data: data,
+                    success: function (data) {
+                        $("#loading").fadeOut();
+                        if (data == 'KO') {
+                            swal({
+                                title: "Terjadi Kesalahan",
+                                text: "Mohon maaf, terdapat kesalahan dalam sistem kami, silahkan ulangi lagi",
+                                type: "error",
+                                button: true,
+                            })
+                        }
+                        else if (data == 'OK') {
+                            swal({
+                                title: "Sukses",
+                                text: "Kamu telah mendaftar untuk menjadi relawan , namun status masih menunggu persetujuan admin",
+                                type: "success",
+                                button: true,
+                            })
+                            setTimeout(function () {// wait for 5 secs(2)
+                                location.reload(); // then reload the page.(3)
+                            }, 3000);
+                        }
+                        else if (data == 'NOTLOGIN')
+                        {
+                            swal({
+                                title: "Akun Belum Login",
+                                text: "Silahkan login jika ingin mendaftar menjadi relawan",
+                                type: "warning",
+                                button: true,
+                            })
+                        }
+                        else if (data == 'REGISTERED') {
+                            swal({
+                                title: "Akun sudah terdaftar",
+                                text: "Sebelumnya kamu sudah pernah melakukan pendaftaran, gunakan login dan lakukan pendaftaran ulang",
+                                type: "warning",
+                                button: true,
+                            })
+                        }
+                        else if (data == 'EXIST') {
+                            swal({
+                                title: "Akun sudah terdaftar",
+                                text: "Kamu sudah mendaftar pada acara ini",
+                                type: "warning",
+                                button: true,
+                            })
+                        }
+                        else {
+                            swal({
+                                title: "Sudah Mendaftar",
+                                text: "Kamu telah mendaftar untuk mengikuti acara ini, namun kami masih melakukan validasi pembayaran",
+                                type: "warning",
+                                button: true,
+                            })
+                        }
+                    },
+                    complete: function () {
+                        $("#loading").fadeOut();
+                    }
+                });
+            });
+        });
+    </script>
+}
