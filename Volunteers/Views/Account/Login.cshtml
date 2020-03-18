@@ -45,9 +45,9 @@
                 <div class="row justify-content-center">
                     <div class="col-sm-8 col-lg-5">
                         <div class="u-shadow-v24 g-bg-white rounded g-py-40 g-px-30">
-                            <header class="text-center mb-4">
-                                <h2 class="h2 g-color-black g-font-weight-600">Daftar atau Masuk</h2>
-                            </header>
+                            <div class="login-logo text-center db">
+                                <img class="g-width-150" src="~/assets/images/logo/logo-relawan-covid19.png" alt="Home" />
+                            </div>
 
                             <!-- Form -->
                             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "g-py-15", role = "form" }))

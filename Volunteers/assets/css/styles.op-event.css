@@ -24733,8 +24733,8 @@ img.u-block-hover__main--magnifier-top-left {
 }
 
 .btn-primary {
-  background-color: #359dcf;
-  border-color: #359dcf;
+    background-color: #7ecf35;
+    border-color: #7ecf35;
 }
 
 .btn-primary:hover {
@@ -28058,7 +28058,7 @@ pre[class*="language-"] .toolbar-item a {
 ------------------------------------*/
 /* Primary Colors */
 .g-brd-primary {
-  border-color: #359dcf !important;
+    border-color: #7ecf35 !important;
 }
 
 .g-brd-primary--before::before {
@@ -31837,7 +31837,7 @@ pre[class*="language-"] .toolbar-item a {
 
 /* Main Colors */
 .g-color-main {
-  color: #979aa7 !important;
+    color: #52545d !important;
 }
 
 .g-color-main--hover:hover {
@@ -31846,7 +31846,7 @@ pre[class*="language-"] .toolbar-item a {
 
 /* Primary Colors */
 .g-color-primary {
-  color: #359dcf !important;
+    color: #7ecf35 !important;
 }
 
 .u-block-hover:hover .g-color-primary--hover, .g-color-primary--hover:hover {

@@ -190,12 +190,14 @@
     <Compile Include="Controllers\AdministratorsController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JobsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OrganizationsController.cs" />
     <Compile Include="Controllers\VolunteerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\DateTimeHelper.cs" />
     <Compile Include="Helpers\UploadFileHelper.cs" />
     <Compile Include="Infrastructures\ApplicationDbContext.cs" />
     <Compile Include="Migrations\202003171008256_InitialCreate.cs" />
@@ -219,6 +221,7 @@
     <Compile Include="Models\Organization.cs" />
     <Compile Include="Models\Province.cs" />
     <Compile Include="Repositories\AdministratorRepository.cs" />
+    <Compile Include="Repositories\JobRepository.cs" />
     <Compile Include="Repositories\OrganizationRepository.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -602,6 +605,7 @@
     <Content Include="assets\images\backgrounds\banner2.jpg" />
     <Content Include="assets\images\favicon\browserconfig.xml" />
     <Content Include="assets\images\icon\red.png" />
+    <Content Include="assets\images\logo\logo-relawan-covid19.png" />
     <Content Include="assets\images\no-image.png" />
     <Content Include="assets\js\blocks\temp.txt" />
     <Content Include="assets\js\components\gmap\hs.map.js" />
@@ -5632,10 +5636,10 @@
     <Content Include="Views\Organizations\Jobs.cshtml" />
     <Content Include="Views\Shared\_LayoutOrganizations.cshtml" />
     <Content Include="Views\Organizations\AddJob.cshtml" />
+    <Content Include="Views\Jobs\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="assets\images\logo\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Volunteer\" />
   </ItemGroup>
