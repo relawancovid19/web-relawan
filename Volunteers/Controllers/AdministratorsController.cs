@@ -31,6 +31,11 @@ namespace Volunteers.Controllers
             var organizations = await repository.GetOrganizations();
             return View(organizations);
         }
+        public JsonResult IsEmailExsist(string email)
+        {
+            return Json(!db.Users.Any(x => x.Email == email)
+                , JsonRequestBehavior.AllowGet);
+        }
 
         public async Task<ActionResult> AddOrganization()
         {
@@ -93,6 +98,15 @@ namespace Volunteers.Controllers
                     Trace.TraceError(ex.StackTrace);
                 }
             }
+            var provinces = await db.Provinces.Where(x => x.IsActive == true)
+                .Select(i => new SelectListItem()
+                {
+                    Text = i.Name,
+                    Value = i.IdProvince,
+                    Selected = false
+                }).ToArrayAsync();
+
+            ViewBag.Provinces = provinces;
             return View();
         }
 
