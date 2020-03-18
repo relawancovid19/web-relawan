@@ -11,7 +11,7 @@ using Volunteers.Repositories;
 
 namespace Volunteers.Controllers
 {
-    [Authorize(Roles = "Administrator")]
+    [Authorize(Roles = "SA")]
     public class AdministratorsController : BaseController
     {
         private AdministratorRepository repository = new AdministratorRepository();

@@ -1,14 +1,14 @@
-﻿@model IEnumerable<Volunteers.Models.Organization>
+﻿@model IEnumerable<Volunteers.Models.Job>
 @{
-    Layout = "~/Views/Shared/_LayoutAdministrators.cshtml";
+    Layout = "~/Views/Shared/_LayoutOrganizations.cshtml";
 }
 
 <div class="row page-titles">
 
     <div class="col-md-6 col-8 align-self-center">
-        <h3 class="text-themecolor m-b-0 m-t-0">Semua Organisasi</h3>
+        <h3 class="text-themecolor m-b-0 m-t-0">Semua Pekerjaan</h3>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item active">Kelola Organisasi</li>
+            <li class="breadcrumb-item active">Kelola Pekerjaan</li>
         </ol>
     </div>
 </div>
@@ -16,27 +16,26 @@
 
 <div class="card">
     <div class="card-body">
-        @*<p><a class="btn btn-info" href="@Url.Action("AddFreeEvent")">Tambah Event Gratis</a> | <a class="btn btn-info" href="@Url.Action("AddPaidEvent")">Tambah Event Berbayar</a> | <a class="btn btn-info" href="@Url.Action("AddSupportingEvent")">Tambah Event Support</a></p>*@
+        <p><a class="btn btn-info" href="@Url.Action("AddJob")">Tambah Pekerjaan</a> </p>
         <div class="table-responsive m-t-40">
             <table id="myTable" class="table table-bordered table-striped">
                 <thead class="table-header">
                     <tr class="color-table">
-                        <th>Full Name</th>
-                        <th>Email</th>
-                        <th>Institution</th>
-                        <th>Province</th>
+                        <th>Title</th>
+                        <th>Lokasi</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td>@item.FullName</td>
-                            <td>@item.Email</td>
-                            <td>@item.Institution</td>
-                            <td>@item.Province.Name</td>
+                            <td>@item.Title</td>
+                            <td>@item.Location</td>
+                            <td>Detail</td>
                         </tr>
                     }
+
                 </tbody>
             </table>
         </div>

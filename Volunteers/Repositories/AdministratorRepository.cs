@@ -18,7 +18,7 @@ namespace Volunteers.Repositories
         }
         public async Task<IEnumerable<Models.Organization>> GetOrganizations()
         {
-            return await db.Organizations.ToListAsync();
+            return await db.Organizations.Include("Province").ToListAsync();
         }
         public async Task<IEnumerable<Models.Province>> GetProvinces()
         {

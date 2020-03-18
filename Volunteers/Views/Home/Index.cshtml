@@ -1,24 +1,143 @@
-﻿<section id="home" class="g-pos-rel">
-    <div class="js-carousel" data-autoplay="true" data-infinite="true" data-fade="true" data-speed="5000">
-        <div class="js-slide g-min-height-100vh g-flex-centered g-bg-cover g-bg-pos-top-center g-bg-img-hero g-bg-black-opacity-0_3--after"
-             style="background-image: url(/assets/images/backgrounds/banner1.jpg);"></div>
-        <div class="js-slide g-min-height-100vh g-flex-centered g-bg-cover g-bg-pos-top-center g-bg-img-hero g-bg-black-opacity-0_3--after"
-             style="background-image: url(/assets/images/backgrounds/banner2.jpg);"></div>
-    </div>
-    <div class="g-absolute-centered--y g-left-0 g-right-0">
-        <div class="container g-z-index-1">
-            <div class="row">
-                <div class="col">
-                    <div class="g-max-width-600">
-                        <h1 class="g-color-white g-font-weight-700 g-font-size-40 g-font-size-60--md g-mb-30">
-                            Relawan Covid-19
-                        </h1>
-                        <p class="h3 g-color-white g-font-weight-300 g-letter-spacing-1 mb-5">
-                            Mari kita bantu saudara-saudara kita yang membutuhkan bantuan.
-                        </p>
+﻿@model IEnumerable<Volunteers.Models.Job>
+<section class="g-py-10">
+    <div class="container">
+        <div class="text-center g-mb-50">
+            <h2 class="h4">
+                Beranda
+            </h2>
+        </div>
+
+        <div class="row u-timeline-v1-wrap g-mx-minus-15">
+           
+            @{ 
+                var no = 1;
+            }
+            @foreach (var item in Model)
+            {
+                if (no % 2 != 0)
+                {
+                    <div class="col-md-6 g-orientation-right g-pl-60 g-pl-15--md g-pr-40--md g-mb-60 g-mb-0--md g-pt-40">
+                        <div class="u-timeline-v1__icon g-color-gray-light-v5 g-ml-13 g-ml-minus-10--md">
+                            <i class="fa fa-circle"></i>
+                        </div>
+
+                        <div class="g-pos-rel">
+                            <!-- Timeline Arrow -->
+                            <div class="g-hidden-sm-down u-triangle-inclusive-v1--left g-top-30 g-z-index-2">
+                                <div class="u-triangle-inclusive-v1--left__front g-brd-white-left g-brd-white-right"></div>
+                                <div class="u-triangle-inclusive-v1--left__back g-brd-gray-light-v4-left g-brd-gray-light-v4-right"></div>
+                            </div>
+
+                            <div class="g-hidden-md-up u-triangle-inclusive-v1--right g-top-30 g-z-index-2">
+                                <div class="u-triangle-inclusive-v1--right__front g-brd-white-right"></div>
+                                <div class="u-triangle-inclusive-v1--right__back g-brd-gray-light-v4-right"></div>
+                            </div>
+                            <!-- End Timeline Arrow -->
+                            <!-- Timeline Content -->
+                            <article class="u-timeline-v1 g-pa-5">
+                                <figure class="g-pos-rel">
+                                    <img class="img-fluid w-100" src="@item.Banner" alt="Image Description">
+                                </figure>
+
+                                <div class="g-py-25 g-px-20">
+                                    <h3 class="g-font-weight-300 g-mb-15">
+                                        <a class="u-link-v5 g-color-main g-color-primary--hover" href="#!">@item.Title</a>
+                                    </h3>
+
+                                    <div class="g-mb-30">
+                                        @Html.Raw(HttpUtility.HtmlDecode(item.Descriptions))
+                                        <h6 class="g-font-weight-100 g-mb-15">
+                                            <a class="u-link-v5 g-color-main g-color-primary--hover" href="#!">@item.Location</a>
+                                        </h6>
+                                    </div>
+                                    
+                                    <hr class="g-brd-gray-light-v4">
+
+                                    <div class="media g-font-size-12">
+                                        <img class="d-flex mr-3 rounded-circle g-width-30 g-height-30" src="https://banner2.cleanpng.com/20180828/sxw/kisspng-clip-art-computer-icons-user-download-chamber-of-d-talonpaw-svg-png-icon-free-download-175238-on-5b84c95a116717.2809616615354289540713.jpg" alt="Image Description">
+                                        <div class="media-body align-self-center text-uppercase">
+                                            <a class="u-link-v5 g-color-main g-color-primary--hover" href="#!">@item.Organization.FullName</a>
+                                        </div>
+
+                                        <div class="align-self-center">
+                                            <a class="u-link-v5 g-color-main g-color-primary--hover g-mr-10" href="#!">
+                                                <i class="icon-bubbles g-mr-2"></i>
+                                                16
+                                            </a>
+                                            <a class="u-link-v5 g-color-main g-color-primary--hover" href="#!">
+                                                <i class="icon-eye g-mr-2"></i>
+                                                129
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            <!-- End Timeline Content -->
+                        </div>
                     </div>
-                </div>
-            </div>
+                }
+                else
+                {
+                    <div class="col-md-6 g-orientation-left g-pl-60 g-pl-40--md g-mt-60--md g-mb-60 g-mb-0--md g-pt-40">
+                        <div class="u-timeline-v1__icon g-color-gray-light-v5 g-mr-13 g-mr-minus-8--md">
+                            <i class="fa fa-circle"></i>
+                        </div>
+
+                        <div class="g-pos-rel">
+                            <!-- Timeline Arrow -->
+                            <div class="u-triangle-inclusive-v1--right g-top-30 g-z-index-2">
+                                <div class="u-triangle-inclusive-v1--right__front g-brd-white-right"></div>
+                                <div class="u-triangle-inclusive-v1--right__back g-brd-gray-light-v4-right"></div>
+                            </div>
+                            <!-- End Timeline Arrow -->
+                            <!-- Timeline Content -->
+                            <article class="u-timeline-v1 g-pa-5">
+                                <figure class="g-pos-rel">
+                                    <img class="img-fluid w-100" src="@item.Banner" alt="Image Description">
+
+                                </figure>
+
+                                <div class="g-py-25 g-px-20">
+                                    <h3 class="g-font-weight-300 g-mb-15">
+                                        <a class="u-link-v5 g-color-main g-color-primary--hover" href="#!">@item.Title</a>
+                                    </h3>
+
+                                    <div class="g-mb-30">
+                                        @Html.Raw(HttpUtility.HtmlDecode(item.Descriptions))
+                                        <h6 class="g-font-weight-100 g-mb-15">
+                                            <a class="u-link-v5 g-color-main g-color-primary--hover" href="#!">@item.Location</a>
+                                        </h6>
+                                    </div>
+
+                                    <hr class="g-brd-gray-light-v4">
+
+                                    <div class="media g-font-size-12">
+                                        <img class="d-flex mr-3 rounded-circle g-width-30 g-height-30" src="https://banner2.cleanpng.com/20180828/sxw/kisspng-clip-art-computer-icons-user-download-chamber-of-d-talonpaw-svg-png-icon-free-download-175238-on-5b84c95a116717.2809616615354289540713.jpg" alt="Image Description">
+                                        <div class="media-body align-self-center text-uppercase">
+                                            <a class="u-link-v5 g-color-main g-color-primary--hover" href="#!">@item.Organization.FullName</a>
+                                        </div>
+
+                                        <div class="align-self-center">
+                                            <a class="u-link-v5 g-color-main g-color-primary--hover g-mr-10" href="#!">
+                                                <i class="icon-bubbles g-mr-2"></i>
+                                                21
+                                            </a>
+                                            <a class="u-link-v5 g-color-main g-color-primary--hover" href="#!">
+                                                <i class="icon-eye g-mr-2"></i>
+                                                178
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            <!-- End Timeline Content -->
+                        </div>
+                    </div>
+                    <br />
+                }
+                
+                no++;
+            }
         </div>
     </div>
 </section>

@@ -76,7 +76,12 @@
                         <a href="#" class="dropdown-toggle link u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">@ViewBag.FullName <span class="caret"></span></a>
                         <div class="dropdown-menu animated flipInY">
                             <p role="separator" class="divider"></p>
-                            <a href="@Url.Action("Logout", "Account")" class="dropdown-item"><i class="fa fa-power-off"></i> Logout</a>
+                            <a href="@Url.Action("Profile", "Hosts")" , class="dropdown-item"><i class="ti-user"></i> Profil</a>
+                            <a href="@Url.Action("EditProfile", "Hosts")" class="dropdown-item"><i class="ti-cut"></i> Edit Info Profil</a>
+                            <p role="separator" class="divider"></p>
+                            <a href="@Url.Action("UpdateProfileHost", "Hosts")" class="dropdown-item"><i class="ti-settings"></i> Konfigurasi Profil</a>
+                            <p role="separator" class="divider"></p>
+                            <a href="@Url.Action("Logout", "Account")" class="dropdown-item"><i class="fa fa-power-off"></i> Keluar</a>
                         </div>
                     </div>
                 </div>
@@ -84,14 +89,8 @@
                     <ul id="sidebarnav">
                         <li class="nav-small-cap">ADMINISTRASI</li>
                         <li>
-                            <a href="@Url.Action("Jobs", "Administrators")"><i class="ti-agenda"></i><span class="hide-menu">Pekerjaan</span></a>
+                            <a href="@Url.Action("Jobs", "Organizations")"><i class="ti-agenda"></i><span class="hide-menu">Pekerjaan</span></a>
                         </li>
-                        <li>
-                            <a href="@Url.Action("Organizations", "Administrators")"><i class="ti-home"></i><span class="hide-menu">Organisasi</span></a>
-                        </li>
-                        @*<li>
-                            <a href="@Url.Action("Hosts", "Administrators")"><i class="ti-user"></i><span class="hide-menu">Sukarelawan</span></a>
-                        </li>*@
                         <li class="mb-10"></li>
                     </ul>
                 </nav>
