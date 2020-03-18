@@ -19,7 +19,7 @@
             <div class="card-body">
                 <h4 class="card-title">Organisasi</h4>
                 <h6 class="card-subtitle">Untuk menambahkan Organisasi silahkan isi form berikut</h6>
-                @using (Html.BeginForm("AddOrganization", "Administrators", FormMethod.Post))
+                @using (Html.BeginForm("AddOrganization", "Administrators", FormMethod.Post, new { id = "AddOrganization" }))
                 {
                     @Html.AntiForgeryToken()
                     <div class="form-horizontal">
@@ -48,7 +48,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                @Html.DropDownList("Provinces", (IEnumerable<SelectListItem>)ViewBag.Provinces, "Pilih Provinsi", new
+                                @Html.DropDownList("Province", (IEnumerable<SelectListItem>)ViewBag.Provinces, "Pilih Provinsi", new
                                 {
                                     @class = "form-control",
                                     id = "Provinces",
@@ -62,7 +62,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input class="form-control text-box single-line" data-val="true" data-val-remote="Email sudah digunakan" data-val-remote-additionalfields="*.Email" data-val-remote-type="POST" data-val-remote-url="/Hosts/IsEmailEoExists" data-val-required="Email tidak boleh kosong" id="Email" name="Email" type="text" value="" placeholder="Email" required="required" />
+                                <input class="form-control text-box single-line" data-val="true" data-val-remote="Email sudah digunakan" data-val-remote-additionalfields="*.Email" data-val-remote-type="POST" data-val-remote-url="/Administrators/IsEmailExsist" data-val-required="Email tidak boleh kosong" id="Email" name="Email" type="text" value="" placeholder="Email" required="required" />
                                 <span class="field-validation-valid text-danger" data-valmsg-for="Email" data-valmsg-replace="true"></span>
                             </div>
                         </div>
@@ -129,7 +129,7 @@
                     </div>
 
                     <div class="form-actions">
-                        <button type="submit" class="btn btn-success"> <i class="fa fa-save"></i> Simpan</button>
+                        <input type="submit"  value="Tambah" class="btn btn-info" />
                         @Html.ActionLink("Batal", "Organizations", null, new { @class = "btn btn-inverse" })
                     </div>
                 }
