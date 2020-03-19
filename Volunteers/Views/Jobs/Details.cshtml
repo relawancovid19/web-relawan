@@ -23,11 +23,11 @@
                             <li class="list-inline-item">
                                 @if (Model.Start.Date == Model.Finish.Date)
                                 {
-                                    <span> @Volunteers.Helpers.DateTimeHelper.GetLocalDay(Model.Start), @Volunteers.Helpers.DateTimeHelper.GetLocalDate(Model.Start), @Volunteers.Helpers.DateTimeHelper.GetTime(Model.Start) - @Volunteers.Helpers.DateTimeHelper.GetLocalTime(Model.Finish)</span>
+                                    <span> @Volunteers.Helpers.DateTimeHelper.GetLocalDay(Model.Start), @Volunteers.Helpers.DateTimeHelper.GetLocalDate(Model.Start)</span>
                                 }
                                 else
                                 {
-                                    <span>@Volunteers.Helpers.DateTimeHelper.GetLocalDay(Model.Start), @Volunteers.Helpers.DateTimeHelper.GetLocalDate(Model.Start), @Volunteers.Helpers.DateTimeHelper.GetLocalTime(Model.Start) - @Volunteers.Helpers.DateTimeHelper.GetLocalDay(Model.Finish), @Volunteers.Helpers.DateTimeHelper.GetLocalDate(Model.Finish) @Volunteers.Helpers.DateTimeHelper.GetLocalTime(Model.Finish)</span>
+                                    <span>@Volunteers.Helpers.DateTimeHelper.GetLocalDay(Model.Start), @Volunteers.Helpers.DateTimeHelper.GetLocalDate(Model.Start) - @Volunteers.Helpers.DateTimeHelper.GetLocalDay(Model.Finish), @Volunteers.Helpers.DateTimeHelper.GetLocalDate(Model.Finish) </span>
                                 }
                             </li>
                         </ul>
@@ -176,7 +176,7 @@
 
                                     <div class="col-md-6 form-group g-mb-30">
                                         <div id="inputGroup1_2" class="form-control u-shadow-v25 h-100 g-font-size-default g-theme-color-gray-dark-v2 g-placeholder-inherit g-bg-white g-bg-white--focus g-brd-white g-brd-gray-light-v3--hover g-brd-gray-light-v3--focus g-rounded-1 g-py-13 g-px-12 g-transition-0_2 g-transition--ease-in">
-                                            @Html.DropDownList("Province", (IEnumerable<SelectListItem>)ViewBag.Provinces, "Pilih Provinsi", new
+                                            @Html.DropDownList("Province", (IEnumerable<SelectListItem>)ViewBag.Provinces, "Pilih Domisili", new
                                             {
                                                 @class = "form-control border-right-0 border-top-0 border-left-0",
                                                 id = "Province",
