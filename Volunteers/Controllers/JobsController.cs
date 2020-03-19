@@ -131,5 +131,11 @@ namespace Volunteers.Controllers
             }
             return Json("NOTLOGIN", JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult IsEmailSpeakerExists(string email)
+        {
+            return Json(!db.Users.Any(x => x.Email == email)
+                , JsonRequestBehavior.AllowGet);
+        }
     }
 }

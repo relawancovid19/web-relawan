@@ -29,10 +29,12 @@
     <div id="main-wrapper">
         <header class="topbar">
             <nav class="navbar top-navbar navbar-expand-md navbar-light">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="@Url.Action("Jobs")">
+                <div class="navbar-header" style="line-height: 68px">
+                    <a class="navbar-brand" href="#">
+                       
                         <span>
                             <img src="~/assets/images/logo/logo-relawan-covid19.png" alt="homepage" class="dark-logo" style="width: 148px;" />
+                            <img src="~/assets/images/logo/logo-relawan-covid19.png" class="light-logo" alt="homepage" style="width: 148px;" />
                         </span>
                     </a>
                 </div>
@@ -43,19 +45,18 @@
                     </ul>
                     <ul class="navbar-nav my-lg-0">
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png" alt="user" class="profile-pic" /></a>
+                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
                             <div class="dropdown-menu dropdown-menu-right animated flipInY">
                                 <ul class="dropdown-user">
                                     <li>
                                         <div class="dw-user-box">
-                                            <div class="u-img"><img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png" alt="user"></div>
+                                            <div class="u-img"><img src="~/assets/images/icon/relawan-icon.png" alt="user"></div>
                                             <div class="u-info">
                                                 <h4 class="c-m-0">Administrator</h4>
-                                                <p class="text-muted">Relawan Administrator</p>
                                             </div>
                                         </div>
                                     </li>
-                                    <li><a href="@Url.Action("Logout", "Account")"><i class="fa fa-power-off"></i> Logout</a></li>
+                                    <li><a href="@Url.Action("LogOff", "Account")"><i class="fa fa-power-off"></i> Logout</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -63,27 +64,49 @@
                 </div>
             </nav>
         </header>
+
         <div id="adminSidebar">
             <aside class="left-sidebar">
-                <nav class="sidebar-nav">
-                    <ul id="sidebarnav">
-                        <li class="nav-small-cap">ADMINISTRASI</li>
-                        <li>
-                            <a href="@Url.Action("Jobs", "Organizations")"><i class="ti-agenda"></i><span class="hide-menu">Pekerjaan</span></a>
-                        </li>
-                        <li>
-                            <a href="@Url.Action("Volunteers", "Organizations")"><i class="ti-user"></i><span class="hide-menu">Relawan</span></a>
-                        </li>
-                        <li class="mb-10"></li>
-                    </ul>
-                </nav>
+                <div class="scroll-sidebar">
+                    <div class="user-profile">
+                        <div class="profile-img"> <img src="~/assets/images/icon/relawan-icon.png" alt="user" /> </div>
+                        <div class="profile-text">
+                            <a href="#" class="dropdown-toggle link u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">@ViewBag.FullName <span class="caret"></span></a>
+                            <div class="dropdown-menu animated flipInY">
+                                @*<a href="@Url.Action("Profile", "Hosts")" , class="dropdown-item"><i class="ti-user"></i> Profil</a>
+                                <a href="@Url.Action("EditProfile", "Hosts")" class="dropdown-item"><i class="ti-cut"></i> Edit Info Profil</a>*@
+                                <p role="separator" class="divider"></p>
+                                <a href="@Url.Action("LogOff", "Account")" class="dropdown-item"><i class="fa fa-power-off"></i> Keluar</a>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <nav class="sidebar-nav">
+                        <ul id="sidebarnav">
+                            <li class="nav-small-cap">Menu</li>
+                            <li>
+                                <a href="@Url.Action("Jobs", "Organizations")"><i class="mdi mdi-book-open-variant"></i><span class="hide-menu">Pekerjaan</span></a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Volunteers", "Organizations")"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Daftar Relawan</span></a>
+                            </li>
+                            <li class="mb-10"></li>
+                            <li class="mb-10"></li>
+
+                            <li class="mb-10"></li>
+                        </ul>
+                    </nav>
+                </div>
                 <div class="sidebar-footer">
                     <a href="" class="link" data-toggle="tooltip" title="Settings"><i class="ti-settings"></i></a>
-                    <a href="" class="link" data-toggle="tooltip" title="Email"><i class="mdi mdi-gmail"></i></a>
-                    <a href="@Url.Action("LogOff", "Account")" class="link" data-toggle="tooltip" title="Logout"><i class="mdi mdi-power"></i></a>
+                    <a href="" class="link" data-toggle="tooltip" title="Informasi"><i class="mdi mdi-information-outline"></i></a>
+                    <a href="@Url.Action("LogOff", "Account")" class="link" data-toggle="tooltip" title="Keluar"><i class="mdi mdi-power"></i></a>
                 </div>
             </aside>
         </div>
+
+
 
         <div class="page-wrapper">
             <div class="container-fluid">
