@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Volunteers.Models;
 
 namespace Volunteers.ViewModels
 {
@@ -16,5 +17,11 @@ namespace Volunteers.ViewModels
         public string Location { get; set; }
         public string Start { get; set; }
         public string Finish { get; set; }
+    }
+    public class UpdateTransaction
+    {
+        public string IdTransaction { get; set; }
+        public RegistrationStatus Status { get; set; }
+
     }
 }

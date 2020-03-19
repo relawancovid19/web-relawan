@@ -108,12 +108,51 @@ namespace Volunteers.Controllers
 
         public async Task<ActionResult> DetailVolunteer(string id)
         {
-            var volunteer = await db.Users.Where(x => x.Id == id).SingleOrDefaultAsync();
-            if(volunteer != null)
+            var volunteer = await db.JobTransactions.Include("Volunteer").Include("Job").Include("Volunteer.Province").Include("Job.Organization").Where(x => x.IdTransaction == id).SingleOrDefaultAsync();
+            if (volunteer != null)
             {
                 return View(volunteer);
             }
             return View("Error");
+        }
+        [HttpPost]
+        public async Task<ActionResult> DetailVolunteer(ViewModels.UpdateTransaction data)
+        {
+            var volunteer = await db.JobTransactions.Include("Job").Include("Volunteer").Where(x => x.IdTransaction == data.IdTransaction).SingleOrDefaultAsync();
+            if (volunteer != null)
+            {
+                volunteer.Status = data.Status;
+                db.Entry(volunteer).State = EntityState.Modified;
+                var result = await db.SaveChangesAsync();
+                if(result > 0)
+                {
+                    if(data.Status == Models.RegistrationStatus.Approved)
+                    {
+                        await SendProgramRegistrationEmail(volunteer.Job, volunteer.Volunteer);
+                    }
+                    return RedirectToAction("VolunteerJobs", new { id = volunteer.Job.Id });
+                }
+            }
+            return View("Error");
+        }
+        private async Task SendProgramRegistrationEmail(Models.Job job, Models.ApplicationUser volunteer)
+        {
+            //1. Dapatkan email template yang dipakai untuk mengirim proses registrasi 
+            var registrationEmail = await db.EmailTemplates.FindAsync("program-registration");
+            if (registrationEmail != null)
+            {
+                //contoh apabila ingin mengenerate sebuah URL dari sistem 
+                //var profileUrl = Url.Action("ParticipantProfile", "Reservations", new { reservation = trackParticipant.IdTransaction }, protocol: Request.Url.Scheme);
+                //var eventStatusURL = Url.Action("RegistrationsStatus", "Programs", new { id = participant.QRCode }, protocol: Request.Url.Scheme);
+                //2. Replace di email template, sesuai dengan tag yang diperlukan, sebagai contoh [FullName] di replace dengan FullName dari participant 
+                var emailBody = registrationEmail.Content.Replace("[FullName]", volunteer.FullName)
+                                .Replace("[SessionName]", job.Title)
+                                .Replace("[Date]", job.Start.ToString("dd-MM-yyyy"))
+                                .Replace("[Start]", job.Start.ToString("HH:mm"))
+                                .Replace("[End]", job.Finish.ToString("HH:mm"));
+                //3. Kirim email dengan email service dari identity config 
+                await Helpers.EmailHelper.Send(registrationEmail.Subject.Replace("[SessionName]", job.Title),volunteer.Email,volunteer.FullName, emailBody);
+            }
         }
     }
 }
