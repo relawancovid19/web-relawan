@@ -1,21 +1,26 @@
-﻿<!DOCTYPE html>
+﻿@{ 
+    var title = ViewBag.Title ?? "Relawan COVID-19";
+    var descriptions = ViewBag.Descriptions ?? "Sekarang kamu bisa menjadi relawan Covid-19";
+}
+
+<!DOCTYPE html>
 <html lang="id">
 <head>
-    <title>Relawan COVID-19</title>
-    <meta name="description" content="Sekarang kamu bisa menjadi relawan Covid-19">
+    <title>@title</title>
+    <meta name="description" content="@ViewBag.Descriptions">
     <meta name="author" content="Relawan Covid-19">
     <meta name="twitter:card" content="summary">
     @*<meta name="twitter:site" content="@hostTwitter">*@
-    <meta name="twitter:title" content="Relawan Covid-19">
-    <meta name="twitter:description" content="Sekarang kamu bisa menjadi relawan Covid-19">
-    <meta name="twitter:image" content="#">
+    <meta name="twitter:title" content="@title">
+    <meta name="twitter:description" content="@descriptions">
+    <meta name="twitter:image" content="~/assets/images/logo/logo_square.jpeg">
     <meta name="twitter:image:alt" content="Relawan Covid-19">
 
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Relawan Covid-19">
-    <meta property="og:description" content="Sekarang kamu bisa menjadi relawan Covid-19">
-    @*<meta property="og:url" content="@hostCustomDomain">*@
-    <meta property="og:image" content="#">
+    <meta property="og:title" content="@title">
+    <meta property="og:description" content="@descriptions">
+    <meta property="og:url" content="relawancovid19.id">
+    <meta property="og:image" content="~/assets/images/logo/logo_square.jpeg">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
