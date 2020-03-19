@@ -56,7 +56,7 @@
                                 </a>
 
                                 <div class="g-py-25 g-px-20">
-                                    <h3 class="g-font-weight-600 g-mb-15 g-color-gray-dark-v2">
+                                    <h3 class="g-font-weight-600 g-mb-15 g-color-gray-dark-v2 g-font-size-24--md g-font-size-22">
                                         <a class="u-link-v5 g-color-main g-color-primary--hover" href="@Url.Action("Details", "Jobs", new { id = item.Id })">@item.Title</a>
                                     </h3>
 
@@ -94,12 +94,17 @@
                                         <div class="media-body align-self-center text-uppercase">
                                             <a class="u-link-v5 g-color-main g-color-primary--hover" href="@Url.Action("Details", "Jobs", new { id = item.Id })">@item.Organization.FullName</a>
                                         </div>
-
-                                        <div class="align-self-center">
+                                        <div class="align-self-center d-none d-lg-block">
                                             <a class="btn btn-primary" href="@Url.Action("Details", "Jobs", new { id = item.Id })">
                                                 Bantu Sekarang
                                             </a>
                                         </div>
+
+                                    </div>
+                                    <div class="align-self-center g-pt-15 g-pl-45 d-lg-none d-xl-none d-md-block">
+                                        <a class="btn btn-primary" href="@Url.Action("Details", "Jobs", new { id = item.Id })">
+                                            Bantu Sekarang
+                                        </a>
                                     </div>
                                 </div>
                             </article>
@@ -130,7 +135,7 @@
                                 </a>
 
                                 <div class="g-py-25 g-px-20">
-                                    <h3 class="g-font-weight-600 g-mb-15 g-color-gray-dark-v2">
+                                    <h3 class="g-font-weight-600 g-mb-15 g-color-gray-dark-v2 g-font-size-24--md g-font-size-22">
                                         <a class="u-link-v5 g-color-main g-color-primary--hover" href="@Url.Action("Details", "Jobs", new { id = item.Id })">@item.Title</a>
                                     </h3>
 
@@ -170,11 +175,16 @@
                                             <a class="u-link-v5 g-color-main g-color-primary--hover" href="@Url.Action("Details", "Jobs", new { id = item.Id })">@item.Organization.FullName</a>
                                         </div>
 
-                                        <div class="align-self-center">
+                                        <div class="align-self-center d-none d-lg-block">
                                             <a class="btn btn-primary" href="@Url.Action("Details", "Jobs", new { id = item.Id })">
                                                 Bantu Sekarang
                                             </a>
                                         </div>
+                                    </div>
+                                    <div class="align-self-center g-pt-15 g-pl-45 d-lg-none d-xl-none d-md-block">
+                                        <a class="btn btn-primary" href="@Url.Action("Details", "Jobs", new { id = item.Id })">
+                                            Bantu Sekarang
+                                        </a>
                                     </div>
                                 </div>
                             </article>
