@@ -18,6 +18,10 @@ namespace Volunteers.Repositories
         {
             return await db.Jobs.Include("Organization").Where(x=>x.Organization.UserName == username).ToListAsync();
         }
+        public async Task<Models.Job> GetJob(string id)
+        {
+            return await db.Jobs.Include("Organization").Where(x => x.Id == id).SingleOrDefaultAsync();
+        }
         public async Task<Models.Organization> GetOrganization(string username)
         {
             return await db.Organizations.Where(x => x.UserName == username).SingleOrDefaultAsync();

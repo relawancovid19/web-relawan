@@ -1,10 +1,24 @@
 ﻿@model IEnumerable<Volunteers.Models.Job>
-<section class="g-py-10">
+
+    <section class="g-pos-rel">
+        <div class="js-carousel" data-autoplay="true" data-infinite="true" data-fade="true" data-speed="5000">
+            <div class="js-slide g-min-height-100vh g-flex-centered g-bg-cover g-bg-pos-top-center g-bg-img-hero g-bg-black-opacity-0_3--after" style="background-image: url(/assets/images/backgrounds/banner1.jpg);"></div>
+            <div class="js-slide g-min-height-100vh g-flex-centered g-bg-cover g-bg-pos-top-center g-bg-img-hero g-bg-black-opacity-0_3--after" style="background-image: url(/assets/images/backgrounds/banner2.jpg);"></div>
+        </div>
+        <div class="u-bg-overlay__inner g-absolute-centered w-100">
+            <div class="container text-center g-max-width-750">
+                <div class="text-uppercase u-heading-v2-4--bottom g-brd-primary">
+                    <h3 class="h3 g-letter-spacing-7 g-font-size-14 g-color-white g-mb-25">Kami Siap Membantu</h3>
+                    <h2 class="u-heading-v2__title g-line-height-1 g-letter-spacing-3 g-font-weight-700 g-font-size-60 g-color-white mb-0">Relawan Covid-19</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section class="g-py-80">
     <div class="container">
-        <div class="text-center g-mb-50">
-            <h2 class="h4">
-                Beranda
-            </h2>
+        <div class="text-uppercase u-heading-v2-4--bottom g-brd-primary g-mb-30">
+            <h2 class="u-heading-v2__title g-line-height-1 g-letter-spacing-2 g-font-weight-700 g-font-size-30 g-font-size-40--md g-color-black mb-0">Beranda</h2>
         </div>
 
         <div class="row u-timeline-v1-wrap g-mx-minus-15">
@@ -35,39 +49,49 @@
                             <!-- End Timeline Arrow -->
                             <!-- Timeline Content -->
                             <article class="u-timeline-v1 g-pa-5">
-                                <figure class="g-pos-rel">
-                                    <img class="img-fluid w-100" src="@item.Banner" alt="Image Description">
-                                </figure>
+                                <a href="@Url.Action("Details", "Jobs", new { id = item.Id })">
+                                    <figure class="g-pos-rel">
+                                        <img class="img-fluid w-100" src="@item.Banner" alt="Image Description">
+                                    </figure>
+                                </a>
 
                                 <div class="g-py-25 g-px-20">
-                                    <h3 class="g-font-weight-300 g-mb-15">
-                                        <a class="u-link-v5 g-color-main g-color-primary--hover" href="#!">@item.Title</a>
+                                    <h3 class="g-font-weight-600 g-mb-15 g-color-gray-dark-v2">
+                                        <a class="u-link-v5 g-color-main g-color-primary--hover" href="@Url.Action("Details", "Jobs", new { id = item.Id })">@item.Title</a>
                                     </h3>
 
-                                    <div class="g-mb-30">
-                                        @Html.Raw(HttpUtility.HtmlDecode(item.Descriptions))
-                                        <h6 class="g-font-weight-100 g-mb-15">
-                                            <a class="u-link-v5 g-color-main g-color-primary--hover" href="#!">@item.Location</a>
-                                        </h6>
+                                    @*<div class="g-mb-30">
+            @Html.Raw(HttpUtility.HtmlDecode(item.Descriptions))
+            <a class="u-link-v5 g-color-main g-color-primary--hover g-font-size-14" href="#!">
+                <i class="icon-location-pin g-mr-2"></i>
+                @item.Location
+            </a>
+        </div>*@
+                                    <div class="media g-font-size-13">
+                                        <i class="icon-clock g-mr-4 g-pt-4"></i>
+                                        <div class="media-body align-self-center">
+                                            <span class="u-link-v5 g-color-main g-color-primary--hover"> @Volunteers.Helpers.DateTimeHelper.GetLocalDate(item.Start)</span>
+                                        </div>
                                     </div>
-                                    
+                                    <div class="media g-font-size-13">
+                                        <i class="icon-location-pin g-mr-2 g-pt-4"></i>
+                                        <div class="media-body align-self-center">
+                                            <a class="u-link-v5 g-color-main g-color-primary--hover" href="@Url.Action("Details", "Jobs", new { id = item.Id })">@item.Location</a>
+                                        </div>
+                                    </div>
+
                                     <hr class="g-brd-gray-light-v4">
 
                                     <div class="media g-font-size-12">
-                                        <img class="d-flex mr-3 rounded-circle g-width-30 g-height-30" src="https://banner2.cleanpng.com/20180828/sxw/kisspng-clip-art-computer-icons-user-download-chamber-of-d-talonpaw-svg-png-icon-free-download-175238-on-5b84c95a116717.2809616615354289540713.jpg" alt="Image Description">
+                                        <img class="d-flex mr-3 rounded-circle g-width-30 g-height-30" src="~/assets/admin/images/users/1.jpg" alt="Image Description">
                                         <div class="media-body align-self-center text-uppercase">
-                                            <a class="u-link-v5 g-color-main g-color-primary--hover" href="#!">@item.Organization.FullName</a>
+                                            <a class="u-link-v5 g-color-main g-color-primary--hover" href="@Url.Action("Details", "Jobs", new { id = item.Id })">@item.Organization.FullName</a>
                                         </div>
 
                                         <div class="align-self-center">
-                                            <a class="u-link-v5 g-color-main g-color-primary--hover g-mr-10" href="#!">
-                                                <i class="icon-bubbles g-mr-2"></i>
-                                                16
-                                            </a>
-                                            <a class="u-link-v5 g-color-main g-color-primary--hover" href="#!">
-                                                <i class="icon-eye g-mr-2"></i>
-                                                129
-                                            </a>
+                                            <button class="btn btn-primary" type="submit">
+                                                Bantu Sekarang
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -92,40 +116,49 @@
                             <!-- End Timeline Arrow -->
                             <!-- Timeline Content -->
                             <article class="u-timeline-v1 g-pa-5">
-                                <figure class="g-pos-rel">
-                                    <img class="img-fluid w-100" src="@item.Banner" alt="Image Description">
-
-                                </figure>
+                                <a href="@Url.Action("Details", "Jobs", new { id = item.Id })">
+                                    <figure class="g-pos-rel">
+                                        <img class="img-fluid w-100" src="@item.Banner" alt="Image Description">
+                                    </figure>
+                                </a>
 
                                 <div class="g-py-25 g-px-20">
-                                    <h3 class="g-font-weight-300 g-mb-15">
-                                        <a class="u-link-v5 g-color-main g-color-primary--hover" href="#!">@item.Title</a>
+                                    <h3 class="g-font-weight-600 g-mb-15 g-color-gray-dark-v2">
+                                        <a class="u-link-v5 g-color-main g-color-primary--hover" href="@Url.Action("Details", "Jobs", new { id = item.Id })">@item.Title</a>
                                     </h3>
 
-                                    <div class="g-mb-30">
-                                        @Html.Raw(HttpUtility.HtmlDecode(item.Descriptions))
-                                        <h6 class="g-font-weight-100 g-mb-15">
-                                            <a class="u-link-v5 g-color-main g-color-primary--hover" href="#!">@item.Location</a>
-                                        </h6>
+                                    @*<div class="g-mb-30">
+            @Html.Raw(HttpUtility.HtmlDecode(item.Descriptions))
+            <a class="u-link-v5 g-color-main g-color-primary--hover g-font-size-14" href="#!">
+                <i class="icon-location-pin g-mr-2"></i>
+                @item.Location
+            </a>
+        </div>*@
+                                    <div class="media g-font-size-13">
+                                        <i class="icon-clock g-mr-4 g-pt-4"></i>
+                                        <div class="media-body align-self-center">
+                                            <span class="u-link-v5 g-color-main g-color-primary--hover"> @Volunteers.Helpers.DateTimeHelper.GetLocalDate(item.Start)</span>
+                                        </div>
+                                    </div>
+                                    <div class="media g-font-size-13">
+                                        <i class="icon-location-pin g-mr-2 g-pt-4"></i>
+                                        <div class="media-body align-self-center">
+                                            <a class="u-link-v5 g-color-main g-color-primary--hover" href="@Url.Action("Details", "Jobs", new { id = item.Id })">@item.Location</a>
+                                        </div>
                                     </div>
 
                                     <hr class="g-brd-gray-light-v4">
 
                                     <div class="media g-font-size-12">
-                                        <img class="d-flex mr-3 rounded-circle g-width-30 g-height-30" src="https://banner2.cleanpng.com/20180828/sxw/kisspng-clip-art-computer-icons-user-download-chamber-of-d-talonpaw-svg-png-icon-free-download-175238-on-5b84c95a116717.2809616615354289540713.jpg" alt="Image Description">
+                                        <img class="d-flex mr-3 rounded-circle g-width-30 g-height-30" src="~/assets/admin/images/users/1.jpg" alt="Image Description">
                                         <div class="media-body align-self-center text-uppercase">
-                                            <a class="u-link-v5 g-color-main g-color-primary--hover" href="#!">@item.Organization.FullName</a>
+                                            <a class="u-link-v5 g-color-main g-color-primary--hover" href="@Url.Action("Details", "Jobs", new { id = item.Id })">@item.Organization.FullName</a>
                                         </div>
 
                                         <div class="align-self-center">
-                                            <a class="u-link-v5 g-color-main g-color-primary--hover g-mr-10" href="#!">
-                                                <i class="icon-bubbles g-mr-2"></i>
-                                                21
-                                            </a>
-                                            <a class="u-link-v5 g-color-main g-color-primary--hover" href="#!">
-                                                <i class="icon-eye g-mr-2"></i>
-                                                178
-                                            </a>
+                                            <button class="btn btn-primary" type="submit">
+                                                Bantu Sekarang
+                                            </button>
                                         </div>
                                     </div>
                                 </div>

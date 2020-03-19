@@ -32,7 +32,9 @@
                         <tr>
                             <td>@item.Title</td>
                             <td>@item.Location</td>
-                            <td>Detail</td>
+                            <td><p><a class="btn btn-info" href="@Url.Action("VolunteerJobs", new { id = item.Id })" target="_blank">Relawan</a></p>
+                                <p><a class="btn btn-info" href="@Url.Action("EditJob", new { id = item.Id })" target="_blank">Ubah</a></p>
+                                <p><a class="btn btn-info" href="@Url.Action("Details", "Jobs", new { id = item.Id })" target="_blank">Detail</a></p></td>
                         </tr>
                     }
 

@@ -1,0 +1,111 @@
+﻿@model Volunteers.Models.JobTransaction
+@{
+    Layout = "~/Views/Shared/_LayoutOrganizations.cshtml";
+}
+
+<div class="row page-titles">
+    <div class="col-md-6 col-8 align-self-center">
+        <h3 class="text-themecolor m-b-0 m-t-0">Detail Peserta</h3>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="@Url.Action("ParticipantList")">Acara</a></li>
+            <li class="breadcrumb-item active">Konfigurasi Acara</li>
+        </ol>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card card-outline-info">
+            <div class="card-header">
+                <h4 class="m-b-0 text-white">
+                    @Model.Job.Title
+                    ID Transaksi : @Model.IdTransaction
+                </h4>
+            </div>
+            <div class="card-body">
+                <div class="form-body">
+                    <div class="m-b-30">
+                        <h4 class="box-title">Nama Peserta</h4>
+                        <p class="text-muted font-13">@Model.Volunteer.FullName</p>
+                    </div>
+                    <div class="m-b-30">
+                        <h4 class="box-title">Nomer Telpon</h4>
+                        <p class="text-muted font-13">@Model.Volunteer.PhoneNumber</p>
+                    </div>
+                    <div class="m-b-30">
+                        <h4 class="box-title">Jabatan</h4>
+                        <p class="text-muted font-13">@Model.Volunteer.Title</p>
+                    </div>
+                    <div class="m-b-30">
+                        <h4 class="box-title">Province</h4>
+                        <p class="text-muted font-13">@Model.Volunteer.Province.Name</p>
+                    </div>
+                    <div class="m-b-30">
+                        <h4 class="box-title">Email</h4>
+                        <p class="text-muted font-13">@Model.Volunteer.Email</p>
+                    </div>
+                    <div class="m-b-30">
+                        <h4 class="box-title">Organization</h4>
+                        <p class="text-muted font-13">@Model.Job.Organization.FullName</p>
+                    </div>
+                    <div class="m-b-30">
+                        <h4 class="box-title">Institusi</h4>
+                        <p class="text-muted font-13">@Model.Volunteer.Institution</p>
+                    </div>
+                    <div class="m-b-30">
+                        <h4 class="box-title">Tanggal Pendaftaran</h4>
+                        <p class="text-muted font-13">@Model.Registered</p>
+                    </div>
+                    <div class="m-b-30">
+                        <h4 class="box-title">Status</h4>
+                        <p class="text-muted font-13">@Model.Status</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Status Peserta</h4>
+                <h6 class="card-subtitle">Untuk Merubah status peserta terdaftar silahkan pilih</h6>
+                @using (Html.BeginForm("DetailVolunteer", "Organizations", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.IdTransaction)
+                    <div class="form-group">
+                        <h6 class="card-subtitle">Status Transaction</h6>
+                        @Html.EnumDropDownListFor(model => model.Status, "Pilih Status", new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <div class="">
+                            <input type="submit" value="Update" class="btn btn-info" />
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+@section styles
+{
+    <link href="~/assets/vendor/sweetalert/sweetalert.css" rel="stylesheet" type="text/css" />
+}
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/assets/vendor/sweetalert/sweetalert.min.js"></script>
+    <script>
+        $(function () {
+            $("form").submit(function (e) {
+                $.post($(this).attr("action"),
+                    $(this).serialize(),
+                    function (data) {
+                        $("#result").html(data);
+                        swal("Berhasil", "Anda Berhasil Memperbarui Status Pesertas");
+                    });
+                e.preventDefault();
+            });
+        });
+    </script>
+}
+

@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Volunteers.Models.JobTransaction>
+@{
+    Layout = "~/Views/Shared/_LayoutOrganizations.cshtml";
+}
+
+<div class="row page-titles">
+
+    <div class="col-md-6 col-8 align-self-center">
+        <h3 class="text-themecolor m-b-0 m-t-0">Semua Relawan</h3>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active">Kelola Relawan</li>
+        </ol>
+    </div>
+</div>
+
+
+<div class="card">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="myTable" class="table table-bordered table-striped">
+                <thead class="table-header">
+                    <tr class="color-table">
+                        <th>Nama Lengkap</th>
+                        <th>Email</th>
+                        <th>Telepon</th>
+                        <th>Institusi</th>
+                        <th>Jabatan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Volunteer.FullName</td>
+                            <td>@item.Volunteer.Email</td>
+                            <td>@item.Volunteer.PhoneNumber</td>
+                            <td>@item.Volunteer.Institution</td>
+                            <td>@item.Volunteer.Title</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Styles
+{
+    <link rel="stylesheet" href="~/assets/css/custom.css">
+}
+@section Scripts{
+    <script src="~/assets/js/manage/main.js"></script>
+    <script src="~/assets/vendor/sweetalert/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <script src="~/assets/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            });
+        });
+    </script>
+}
+
+
