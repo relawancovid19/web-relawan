@@ -52,11 +52,11 @@
                                         <div class="dw-user-box">
                                             <div class="u-img"><img src="~/assets/images/icon/relawan-icon.png" alt="user"></div>
                                             <div class="u-info">
-                                                <h4 class="c-m-0">Administrator</h4>
+                                                <h4 class="c-m-0">Organisasi</h4>
                                             </div>
                                         </div>
                                     </li>
-                                    <li><a href="@Url.Action("LogOff", "Account")"><i class="fa fa-power-off"></i> Logout</a></li>
+                                    <li><a href="@Url.Action("Logout", "Account")"><i class="fa fa-power-off"></i> Logout</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -76,7 +76,7 @@
                                 @*<a href="@Url.Action("Profile", "Hosts")" , class="dropdown-item"><i class="ti-user"></i> Profil</a>
                                 <a href="@Url.Action("EditProfile", "Hosts")" class="dropdown-item"><i class="ti-cut"></i> Edit Info Profil</a>*@
                                 <p role="separator" class="divider"></p>
-                                <a href="@Url.Action("LogOff", "Account")" class="dropdown-item"><i class="fa fa-power-off"></i> Keluar</a>
+                                <a href="@Url.Action("Logout", "Account")" class="dropdown-item"><i class="fa fa-power-off"></i> Keluar</a>
                             </div>
 
 
@@ -86,7 +86,7 @@
                         <ul id="sidebarnav">
                             <li class="nav-small-cap">Menu</li>
                             <li>
-                                <a href="@Url.Action("Jobs", "Organizations")"><i class="mdi mdi-book-open-variant"></i><span class="hide-menu">Pekerjaan</span></a>
+                                <a href="@Url.Action("Jobs", "Organizations")"><i class="mdi mdi-book-open-variant"></i><span class="hide-menu">Daftar Pekerjaan</span></a>
                             </li>
                             <li>
                                 <a href="@Url.Action("Volunteers", "Organizations")"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Daftar Relawan</span></a>
@@ -101,7 +101,7 @@
                 <div class="sidebar-footer">
                     <a href="" class="link" data-toggle="tooltip" title="Settings"><i class="ti-settings"></i></a>
                     <a href="" class="link" data-toggle="tooltip" title="Informasi"><i class="mdi mdi-information-outline"></i></a>
-                    <a href="@Url.Action("LogOff", "Account")" class="link" data-toggle="tooltip" title="Keluar"><i class="mdi mdi-power"></i></a>
+                    <a href="@Url.Action("Logout", "Account")" class="link" data-toggle="tooltip" title="Keluar"><i class="mdi mdi-power"></i></a>
                 </div>
             </aside>
         </div>

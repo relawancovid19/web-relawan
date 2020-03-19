@@ -13,11 +13,28 @@ namespace Volunteers
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapRoute("JobDetails", "j/{id}", new
+            {
+                controller = "Jobs",
+                action = "Details",
+                id = UrlParameter.Optional
+            });
+
+            routes.MapRoute("Login",
+               "login",
+               new { controller = "Account", action = "Login" });
+
+            routes.MapRoute("Forgot",
+               "forgot",
+               new { controller = "Account", action = "ForgotPassword" });
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+           
         }
     }
 }
