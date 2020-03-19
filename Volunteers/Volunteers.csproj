@@ -208,25 +208,9 @@
     <Compile Include="Helpers\EmailHelper.cs" />
     <Compile Include="Helpers\UploadFileHelper.cs" />
     <Compile Include="Infrastructures\ApplicationDbContext.cs" />
-    <Compile Include="Migrations\202003171008256_InitialCreate.cs" />
-    <Compile Include="Migrations\202003171008256_InitialCreate.Designer.cs">
-      <DependentUpon>202003171008256_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003171024381_Initial.cs" />
-    <Compile Include="Migrations\202003171024381_Initial.Designer.cs">
-      <DependentUpon>202003171024381_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003171320367_JobTransactionV1.cs" />
-    <Compile Include="Migrations\202003171320367_JobTransactionV1.Designer.cs">
-      <DependentUpon>202003171320367_JobTransactionV1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003171631337_Job_v1.cs" />
-    <Compile Include="Migrations\202003171631337_Job_v1.Designer.cs">
-      <DependentUpon>202003171631337_Job_v1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003181845181_EmailTempalate_v1.cs" />
-    <Compile Include="Migrations\202003181845181_EmailTempalate_v1.Designer.cs">
-      <DependentUpon>202003181845181_EmailTempalate_v1.cs</DependentUpon>
+    <Compile Include="Migrations\202003190304463_DeployV1.cs" />
+    <Compile Include="Migrations\202003190304463_DeployV1.Designer.cs">
+      <DependentUpon>202003190304463_DeployV1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EmailTemplate.cs" />
@@ -266,8 +250,6 @@
     <Content Include="assets\admin\css\spinners.css" />
     <Content Include="assets\admin\css\style-unminify.css" />
     <Content Include="assets\admin\css\style.css" />
-    <Content Include="assets\admin\images\acci-icon.png" />
-    <Content Include="assets\admin\images\background.jpeg" />
     <Content Include="assets\admin\images\custom-select.png" />
     <Content Include="assets\admin\images\favicon.png" />
     <Content Include="assets\admin\images\logo-icon-old.png" />
@@ -5600,6 +5582,7 @@
     <Content Include="assets\vendor\tinymce\skins\lightgray\fonts\tinymce.eot" />
     <Content Include="assets\vendor\tinymce\skins\lightgray\fonts\tinymce.ttf" />
     <Content Include="assets\vendor\tinymce\skins\lightgray\fonts\tinymce.woff" />
+    <None Include="Properties\PublishProfiles\relawan - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -5678,20 +5661,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202003171008256_InitialCreate.resx">
-      <DependentUpon>202003171008256_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003171024381_Initial.resx">
-      <DependentUpon>202003171024381_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003171320367_JobTransactionV1.resx">
-      <DependentUpon>202003171320367_JobTransactionV1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003171631337_Job_v1.resx">
-      <DependentUpon>202003171631337_Job_v1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003181845181_EmailTempalate_v1.resx">
-      <DependentUpon>202003181845181_EmailTempalate_v1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202003190304463_DeployV1.resx">
+      <DependentUpon>202003190304463_DeployV1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

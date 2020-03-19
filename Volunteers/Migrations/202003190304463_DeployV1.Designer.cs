@@ -7,13 +7,13 @@ namespace Volunteers.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class JobTransactionV1 : IMigrationMetadata
+    public sealed partial class DeployV1 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(JobTransactionV1));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(DeployV1));
         
         string IMigrationMetadata.Id
         {
-            get { return "202003171320367_JobTransactionV1"; }
+            get { return "202003190304463_DeployV1"; }
         }
         
         string IMigrationMetadata.Source
