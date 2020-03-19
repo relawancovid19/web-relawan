@@ -34,7 +34,7 @@ namespace Volunteers.Repositories
 
             var newJob = new Models.Job()
             {
-                Id = Guid.NewGuid().ToString(),
+                Id = data.Id,
                 Start = start,
                 Finish = finish,
                 Title = data.Title,
