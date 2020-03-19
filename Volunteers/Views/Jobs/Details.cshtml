@@ -22,11 +22,11 @@
                             <li class="list-inline-item">
                                 @if (Model.Start.Date == Model.Finish.Date)
                                 {
-                                    <span> @Volunteers.Helpers.DateTimeHelper.GetLocalDay(Model.Start), @Volunteers.Helpers.DateTimeHelper.GetLocalDate(Model.Start), @Volunteers.Helpers.DateTimeHelper.GetTime(Model.Start) - @Volunteers.Helpers.DateTimeHelper.GetLocalTime(Model.Finish)</span>
+                                    <span> @Volunteers.Helpers.DateTimeHelper.GetLocalDay(Model.Start), @Volunteers.Helpers.DateTimeHelper.GetLocalDate(Model.Start)</span>
                                 }
                                 else
                                 {
-                                    <span>@Volunteers.Helpers.DateTimeHelper.GetLocalDay(Model.Start), @Volunteers.Helpers.DateTimeHelper.GetLocalDate(Model.Start), @Volunteers.Helpers.DateTimeHelper.GetLocalTime(Model.Start) - @Volunteers.Helpers.DateTimeHelper.GetLocalDay(Model.Finish), @Volunteers.Helpers.DateTimeHelper.GetLocalDate(Model.Finish) @Volunteers.Helpers.DateTimeHelper.GetLocalTime(Model.Finish)</span>
+                                    <span>@Volunteers.Helpers.DateTimeHelper.GetLocalDay(Model.Start), @Volunteers.Helpers.DateTimeHelper.GetLocalDate(Model.Start) - @Volunteers.Helpers.DateTimeHelper.GetLocalDay(Model.Finish), @Volunteers.Helpers.DateTimeHelper.GetLocalDate(Model.Finish) </span>
                                 }
                             </li>
                         </ul>
