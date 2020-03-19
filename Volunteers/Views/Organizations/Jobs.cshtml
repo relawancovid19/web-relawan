@@ -21,7 +21,8 @@
             <table id="myTable" class="table table-bordered table-striped">
                 <thead class="table-header">
                     <tr class="color-table">
-                        <th>Title</th>
+                        <th>Judul</th>
+                        <th>Tanggal</th>
                         <th>Lokasi</th>
                         <th>Aksi</th>
                     </tr>
@@ -31,10 +32,19 @@
                     {
                         <tr>
                             <td>@item.Title</td>
+                            <td>@Volunteers.Helpers.DateTimeHelper.GetLocalDateTime(item.Start)</td>
                             <td>@item.Location</td>
-                            <td><p><a class="btn btn-info" href="@Url.Action("VolunteerJobs", new { id = item.Id })" target="_blank">Relawan</a></p>
-                                <p><a class="btn btn-info" href="@Url.Action("EditJob", new { id = item.Id })" target="_blank">Ubah</a></p>
-                                <p><a class="btn btn-info" href="@Url.Action("Details", "Jobs", new { id = item.Id })" target="_blank">Detail</a></p></td>
+                            <td>
+                                <a href="@Url.Action("EditJob", new { id = item.Id })" target="_blank" data-toggle="tooltip" data-original-title="Edit">
+                                    <i class="fa fa-edit m-1"></i>
+                                </a>
+                                <a href="@Url.Action("VolunteerJobs", new { id = item.Id })" target="_blank" data-toggle="tooltip" data-original-title="Lihat Relawan">
+                                    <i style="margin-left:5px" class="fa fa-users"></i>
+                                </a>
+                                <a href="@Url.Action("Details", "Jobs",new { id = item.Id })" target="_blank" data-toggle="tooltip" data-original-title="Lihat Detail">
+                                    <i class="fa fa-align-justify m-1"></i>
+                                </a>
+                            </td>
                         </tr>
                     }
 

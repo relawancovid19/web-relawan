@@ -619,8 +619,11 @@
     <Content Include="assets\images\backgrounds\banner2.jpg" />
     <Content Include="assets\images\favicon\browserconfig.xml" />
     <Content Include="assets\images\icon\red.png" />
+    <Content Include="assets\images\icon\relawan-icon.png" />
+    <Content Include="assets\images\icon\user.png" />
     <Content Include="assets\images\logo\logo-relawan-covid19.png" />
     <Content Include="assets\images\no-image.png" />
+    <Content Include="assets\images\vector.png" />
     <Content Include="assets\js\blocks\temp.txt" />
     <Content Include="assets\js\components\gmap\hs.map.js" />
     <Content Include="assets\js\components\hs.ajax-autocomplete.js" />

@@ -8,7 +8,7 @@
         <div class="row">
             <!-- Articles Content -->
             <div class="col-lg-9 g-mb-50 g-mb-0--lg">
-                <article class="g-mb-60">
+                <article class="g-mb-30">
                     <header class="g-mb-30">
                         <h2 class="h1 g-mb-15">@Model.Title</h2>
 
@@ -37,14 +37,11 @@
                             </div>
                         </div>
                         <hr class="g-brd-gray-light-v4 g-my-15">
-
-
-
                     </header>
 
                     <div class="g-font-size-16 g-line-height-1_8 g-mb-30">
                         <figure class="u-shadow-v25 g-mb-30">
-                            <img class="img-fluid w-100"
+                            <img class="img-responsive"
                                  src="@Model.Banner"
                                  alt="Banner">
                         </figure>
@@ -52,30 +49,108 @@
                         @Html.Raw(HttpUtility.HtmlDecode(Model.Descriptions))
                     </div>
                 </article>
-
                 <div id="stickyblock-end"></div>
             </div>
-            <hr />
-            <section id="contact">
+
+            <div class="col-lg-3">
+                <div id="stickyblock-start" class="js-sticky-block g-sticky-block--lg g-pt-20" data-start-point="#stickyblock-start" data-end-point="#stickyblock-end">
+                    <!-- News Feed -->
+                    <div class="g-mb-40">
+
+                        <!-- Article -->
+                        <div class="d-lg-none d-xl-none d-md-block">
+                            <div class="u-heading-v3-1 g-mb-30">
+                                <h2 class="h5 u-heading-v3__title g-color-gray-dark-v1 text-uppercase g-brd-primary">Jadilah Relawan</h2>
+                            </div>
+                        </div>
+                        <div class="d-lg-none d-none d-lg-block">
+                            <div class="u-heading-v3-1 g-mb-30 g-pt-105">
+                                <h2 class="h5 u-heading-v3__title g-color-gray-dark-v1 text-uppercase g-brd-primary">Jadilah Relawan</h2>
+                            </div>
+                        </div>
+                        <img class="img-fluid w-100 g-mb-20"
+                             src="~/assets/images/vector.png"
+                             alt="Vector">
+
+                        @if (!User.Identity.IsAuthenticated)
+                        {
+                            <a href="#register" class="btn u-btn-primary btn-lg btn-block g-mr-10 g-mb-15 text-uppercase">Daftar Sekarang</a>
+                        }
+                        else
+                        {
+                            <form id="registrationFormTop" method="post">
+                                <input type="hidden" name="Id" value="@Model.Id" />
+                                @if (ViewBag.Status == "Pending")
+                                {
+                                    <div class="g-brd-primary--focus text-center g-mb-15">
+                                        <div class="g-bg-primary g-color-white g-font-size-16">Menunggu Persetujuan</div>
+                                        <div class="form-control g-color-gray-dark-v4 g-brd-primary g-font-size-14 rounded-0">
+                                            <div class="text-center g-font-size-14 g-color-gray-dark-v5">
+                                                Terima kasih Anda telah melakukan pendaftaran sebagai relawan
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                else if (ViewBag.Status == "Approved")
+                                {
+                                    <div class="g-brd-primary--focus text-center g-mb-15">
+                                        <div class="g-bg-primary g-color-primary g-font-size-16">Kamu Relawan</div>
+                                        <div class="form-control g-color-gray-dark-v4 g-brd-primary g-font-size-14 rounded-0">
+                                            <div class="text-center g-font-size-14 g-color-gray-dark-v5">
+                                                Terimakasih Anda sudah ikut berperan sebagai relawan dalam pekerjaan ini
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                else if (ViewBag.Status == "Rejected")
+                                {
+                                    <div class="g-brd-primary--focus text-center g-mb-15">
+                                        <div class="g-bg-primary g-color-white g-font-size-16">Halo</div>
+                                        <div class="form-control g-color-gray-dark-v4 g-brd-primary g-font-size-14 rounded-0">
+                                            <div class="text-center g-font-size-14 g-color-gray-dark-v5">
+                                                Mohon maaf kriteria kamu kurang cocok untuk pekerjaan ini mungkin coba lagi nanti
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <button type="submit" role="button" class="btn u-btn-primary btn-lg btn-block g-mr-10 g-mb-15 text-uppercase">Daftar Sekarang</button>
+                                }
+
+                            </form>
+                        }
+
+                        <!-- End Article -->
+                    </div>
+                </div>
+
+            </div>
+
+            <section id="register" class="g-pt-50">
+                <hr class="g-brd-gray-light-v4">
                 <div class="container">
                     <!-- Icon Blocks -->
-                    <div class="container">
-                        <div class="u-heading-v8-2 g-mb-30">
-                            <h2 class="h1 text-uppercase u-heading-v8__title g-font-weight-700 g-font-size-26 g-font-secondary g-color-main">Ingin Mendaftar Relawan?</h2>
-                            <p class="mb-0">Daftar Segera !</p>
-                        </div>
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <div class="container">
+                            <div class="u-heading-v8-2 g-mb-30">
+                                <h2 class="h1 text-uppercase u-heading-v8__title g-font-weight-700 g-font-size-26 g-font-secondary g-color-main">Ingin Mendaftar Relawan?</h2>
+                                <p class="mb-0">Daftar Segera !</p>
+                            </div>
 
-                        <form id="registrationForm" method="post">
-                            <input type="hidden" name="Id" value="@Model.Id" />
-                            @if (!User.Identity.IsAuthenticated)
-                            {
+                            <form id="registrationForm" method="post">
+                                <input type="hidden" name="Id" value="@Model.Id" />
+                                @*@if (!User.Identity.IsAuthenticated)
+                                    {*@
                                 <div class="row">
                                     <div class="col-md-6 form-group g-mb-30">
                                         <input id="inputGroup1_1" class="form-control u-shadow-v25 h-100 g-font-size-default g-theme-color-gray-dark-v2 g-placeholder-inherit g-bg-white g-bg-white--focus g-brd-white g-brd-gray-light-v3--hover g-brd-gray-light-v3--focus g-rounded-1 g-py-13 g-px-12 g-transition-0_2 g-transition--ease-in" type="text" name="Name" placeholder="Nama" required="required">
                                     </div>
 
                                     <div class="col-md-6 form-group g-mb-30">
-                                        <input id="inputGroup1_2" class="u-shadow-v25 form-control h-100 g-font-size-default g-theme-color-gray-dark-v2 g-placeholder-inherit g-bg-white g-bg-white--focus g-brd-white g-brd-gray-light-v3--hover g-brd-gray-light-v3--focus g-rounded-1 g-py-13 g-px-12 g-transition-0_2 g-transition--ease-in" type="text" name="Email" placeholder="Email" required="required">
+                                        <input id="inputGroup1_2" class="u-shadow-v25 form-control h-100 g-font-size-default g-theme-color-gray-dark-v2 g-placeholder-inherit g-bg-white g-bg-white--focus g-brd-white g-brd-gray-light-v3--hover g-brd-gray-light-v3--focus g-rounded-1 g-py-13 g-px-12 g-transition-0_2 g-transition--ease-in" type="text" name="Email" placeholder="Email" data-val="true" data-val-remote="Email sudah digunakan" data-val-remote-additionalfields="*.Email" data-val-remote-type="POST" data-val-remote-url="/Jobs/IsEmailSpeakerExists" data-val-required="Email tidak boleh kosong" value="" required="required">
+                                        <span class="field-validation-valid text-danger" data-valmsg-for="Email" data-valmsg-replace="true"></span>
                                     </div>
 
                                     <div class="col-md-6 form-group g-mb-30">
@@ -98,45 +173,53 @@
                                         <input id="inputGroup1_2" class="form-control u-shadow-v25 h-100 g-font-size-default g-theme-color-gray-dark-v2 g-placeholder-inherit g-bg-white g-bg-white--focus g-brd-white g-brd-gray-light-v3--hover g-brd-gray-light-v3--focus g-rounded-1 g-py-13 g-px-12 g-transition-0_2 g-transition--ease-in" type="text" name="Institution" placeholder="Institusi" required="required">
                                     </div>
 
-                                    @Html.DropDownList("Province", (IEnumerable<SelectListItem>)ViewBag.Provinces, "Pilih Provinsi", new
+                                    <div class="col-md-6 form-group g-mb-30">
+                                        <div id="inputGroup1_2" class="form-control u-shadow-v25 h-100 g-font-size-default g-theme-color-gray-dark-v2 g-placeholder-inherit g-bg-white g-bg-white--focus g-brd-white g-brd-gray-light-v3--hover g-brd-gray-light-v3--focus g-rounded-1 g-py-13 g-px-12 g-transition-0_2 g-transition--ease-in">
+                                            @Html.DropDownList("Province", (IEnumerable<SelectListItem>)ViewBag.Provinces, "Pilih Provinsi", new
                                             {
-                                                @class = "col-md-6 form-group g-mb-30",
+                                                @class = "form-control border-right-0 border-top-0 border-left-0",
                                                 id = "Province",
                                                 style = "width:100%"
                                             })
+                                        </div>
+                                    </div>
 
                                     <div class="col-md-12 form-group g-mb-30">
                                         <textarea id="inputGroup1_5" class="form-control u-shadow-v25 g-resize-none g-font-size-default g-theme-color-gray-dark-v2 g-placeholder-inherit g-bg-white g-bg-white--focus g-brd-white g-brd-gray-light-v3--hover g-brd-gray-light-v3--focus g-rounded-1 g-py-13 g-px-12 g-transition-0_2 g-transition--ease-in" rows="6" name="Message" placeholder="Deskripsi" required="required"></textarea>
                                     </div>
                                 </div>
-                            }
-                            @if (ViewBag.Status == "Pending")
-                            {
-                                <div class="text-center">
-                                    <button class="btn u-btn-primary btn-md text-uppercase g-font-weight-700 g-font-size-12 rounded-0 g-px-25 g-py-10 mb-0" type="button" role="button">Terimakasih Sudah Mendaftar, status sekarang menunggu persetujuan admin</button>
-                                </div>
-                            }
-                            else if (ViewBag.Status == "Approved")
-                            {
-                                <div class="text-center">
-                                    <button class="btn u-btn-primary btn-md text-uppercase g-font-weight-700 g-font-size-12 rounded-0 g-px-25 g-py-10 mb-0" type="button" role="button">Terimakasih sudah ikut berperan sebagai relawan</button>
-                                </div>
-                            }
-                            else if (ViewBag.Status == "Rejected")
-                            {
-                                <div class="text-center">
-                                    <button class="btn u-btn-primary btn-md text-uppercase g-font-weight-700 g-font-size-12 rounded-0 g-px-25 g-py-10 mb-0" type="button" role="button">Mohon maaf kriteria kamu kurang cocok untuk pekerjaan ini mungkin coba lagi nanti</button>
-                                </div>
-                            }
-                            else
-                            {
                                 <div class="text-center">
                                     <button class="btn u-btn-primary btn-md text-uppercase g-font-weight-700 g-font-size-12 rounded-0 g-px-25 g-py-10 mb-0" type="submit" role="button">Daftar Sekarang</button>
                                 </div>
-                            }
+                                @*}*@
+                                @*@if (ViewBag.Status == "Pending")
+                                    {
+                                        <div class="text-center">
+                                            <button class="btn u-btn-primary btn-md text-uppercase g-font-weight-700 g-font-size-12 rounded-0 g-px-25 g-py-10 mb-0" type="button" role="button">Terimakasih Sudah Mendaftar, status sekarang menunggu persetujuan admin</button>
+                                        </div>
+                                    }
+                                    else if (ViewBag.Status == "Approved")
+                                    {
+                                        <div class="text-center">
+                                            <button class="btn u-btn-primary btn-md text-uppercase g-font-weight-700 g-font-size-12 rounded-0 g-px-25 g-py-10 mb-0" type="button" role="button">Terimakasih sudah ikut berperan sebagai relawan</button>
+                                        </div>
+                                    }
+                                    else if (ViewBag.Status == "Rejected")
+                                    {
+                                        <div class="text-center">
+                                            <button class="btn u-btn-primary btn-md text-uppercase g-font-weight-700 g-font-size-12 rounded-0 g-px-25 g-py-10 mb-0" type="button" role="button">Mohon maaf kriteria kamu kurang cocok untuk pekerjaan ini mungkin coba lagi nanti</button>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="text-center">
+                                            <button class="btn u-btn-primary btn-md text-uppercase g-font-weight-700 g-font-size-12 rounded-0 g-px-25 g-py-10 mb-0" type="submit" role="button">Daftar Sekarang</button>
+                                        </div>
+                                    }*@
 
-                        </form>
-                    </div>
+                            </form>
+                        </div>
+                    }
                     <!-- End Icon Blocks -->
                 </div>
             </section>
@@ -146,6 +229,11 @@
 
 </section>
 
+<div id="loading" class="preloader">
+    <div class="loader"></div>
+
+</div>
+
 @section styles
 {
     <link href="~/assets/vendor/sweetalert/sweetalert.css" rel="stylesheet" type="text/css" />
@@ -154,6 +242,8 @@
     <link rel="stylesheet" href="~/assets/vendor/icon-line/css/simple-line-icons.css">
 }
 @section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/assets/js/components/hs.sticky-block.js"></script>
     <script src="~/assets/vendor/sweetalert/sweetalert.min.js"></script>
     <script src="~/assets/js/components/hs.tabs.js"></script>>
     <script>
@@ -165,6 +255,79 @@
                 $.ajax({
                     type: "POST",
                     url: '@Url.Action("Apply", "Jobs")',
+                    data: data,
+                    success: function (data) {
+                        $("#loading").fadeOut();
+                        if (data == 'KO') {
+                            swal({
+                                title: "Terjadi Kesalahan",
+                                text: "Mohon maaf, terdapat kesalahan dalam sistem kami, silahkan ulangi lagi",
+                                type: "error",
+                                button: true,
+                            })
+                        }
+                        else if (data == 'OK') {
+                            swal({
+                                title: "Sukses",
+                                text: "Kamu telah mendaftar untuk menjadi relawan , namun status masih menunggu persetujuan dari Admin",
+                                type: "success",
+                                button: true,
+                            })
+                            setTimeout(function () {// wait for 5 secs(2)
+                                location.reload(); // then reload the page.(3)
+                            }, 3000);
+                        }
+                        else if (data == 'NOTLOGIN')
+                        {
+                            swal({
+                                title: "Akun Belum Login",
+                                text: "Silahkan login jika ingin mendaftar menjadi relawan",
+                                type: "warning",
+                                button: true,
+                            })
+                        }
+                        else if (data == 'REGISTERED') {
+                            swal({
+                                title: "Akun sudah terdaftar",
+                                text: "Sebelumnya kamu sudah pernah melakukan pendaftaran, silahkan login dan jadilah relawan",
+                                type: "warning",
+                                button: true,
+                            })
+                        }
+                        else if (data == 'EXIST') {
+                            swal({
+                                title: "Akun sudah terdaftar",
+                                text: "Kamu sudah mendaftar pada acara ini",
+                                type: "warning",
+                                button: true,
+                            })
+                        }
+                        else {
+                            swal({
+                                title: "Sudah Mendaftar",
+                                text: "Kamu telah mendaftar untuk mengikuti acara ini, namun kami masih melakukan validasi pembayaran",
+                                type: "warning",
+                                button: true,
+                            })
+                        }
+                    },
+                    complete: function () {
+                        $("#loading").fadeOut();
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $("#registrationFormTop").submit(function (e) {
+                e.preventDefault()
+                $('#loading').fadeIn();
+                var data = $(this).serialize();
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("ApplyJob", "Jobs")',
                     data: data,
                     success: function (data) {
                         $("#loading").fadeOut();
@@ -199,7 +362,7 @@
                         else if (data == 'REGISTERED') {
                             swal({
                                 title: "Akun sudah terdaftar",
-                                text: "Sebelumnya kamu sudah pernah melakukan pendaftaran, gunakan login dan lakukan pendaftaran ulang",
+                                text: "Sebelumnya kamu sudah pernah melakukan pendaftaran, silahkan login dan lakukan jadilah relawan",
                                 type: "warning",
                                 button: true,
                             })
@@ -226,6 +389,12 @@
                     }
                 });
             });
+        });
+    </script>
+    <script>
+        $(window).on('load', function () {
+            // initialization of sticky blocks
+            $.HSCore.components.HSStickyBlock.init('.js-sticky-block');
         });
     </script>
 }

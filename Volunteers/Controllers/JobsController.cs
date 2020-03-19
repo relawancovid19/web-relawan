@@ -102,7 +102,7 @@ namespace Volunteers.Controllers
             {
                 username = User.Identity.Name;
             }
-            var jobs = await db.Jobs.Where(x => x.Id == id).SingleOrDefaultAsync();
+            var jobs = await db.Jobs.Include("Organization").Where(x => x.Id == id).SingleOrDefaultAsync();
             if (jobs != null)
             {
                 var volunteer = await db.Users.Where(x => x.UserName == username).SingleOrDefaultAsync();
@@ -121,6 +121,8 @@ namespace Volunteers.Controllers
                     var result = await db.SaveChangesAsync();
                     if (result > 0)
                     {
+                        await SendJobRegistrationEmail(newTransaction.Job, volunteer);
+                        await SendJobOrganizerRegistrationEmail(newTransaction.Job, volunteer);
                         return Json("OK", JsonRequestBehavior.AllowGet);
                     }
                 }
@@ -130,6 +132,46 @@ namespace Volunteers.Controllers
                 }
             }
             return Json("NOTLOGIN", JsonRequestBehavior.AllowGet);
+        }
+
+        private async Task SendJobRegistrationEmail(Models.Job job, Models.ApplicationUser volunteer)
+        {
+            //1. Dapatkan email template yang dipakai untuk mengirim proses registrasi 
+            var registrationEmail = await db.EmailTemplates.FindAsync("job-registration-volunteer");
+            if (registrationEmail != null)
+            {
+                var emailBody = registrationEmail.Content.Replace("[FullName]", volunteer.FullName)
+                                .Replace("[Title]", job.Title)
+                                .Replace("[Day]", Helpers.DateTimeHelper.GetLocalDay(job.Start))
+                                .Replace("[Date]", Helpers.DateTimeHelper.GetLocalDate(job.Start))
+                                .Replace("[Time]", Helpers.DateTimeHelper.GetLocalTime(job.Start))
+                                .Replace("[Location]", job.Location)
+                                .Replace("[Organizer]", job.Organization.FullName);
+                await Helpers.EmailHelper.Send(registrationEmail.Subject.Replace("[Title]", job.Title), volunteer.Email, volunteer.FullName, emailBody);
+            }
+        }
+
+        private async Task SendJobOrganizerRegistrationEmail(Models.Job job, Models.ApplicationUser volunteer)
+        {
+            //1. Dapatkan email template yang dipakai untuk mengirim proses registrasi 
+            var registrationEmail = await db.EmailTemplates.FindAsync("send-job-registration");
+            if (registrationEmail != null)
+            {
+                var emailBody = registrationEmail.Content.Replace("[FullName]", volunteer.FullName)
+                                .Replace("[Title]", job.Title)
+                                .Replace("[Day]", Helpers.DateTimeHelper.GetLocalDay(job.Start))
+                                .Replace("[Date]", Helpers.DateTimeHelper.GetLocalDate(job.Start))
+                                .Replace("[Time]", Helpers.DateTimeHelper.GetLocalTime(job.Start))
+                                .Replace("[Location]", job.Location)
+                                .Replace("[Organizer]", job.Organization.FullName);
+                await Helpers.EmailHelper.Send(registrationEmail.Subject.Replace("[Title]", job.Title), job.Organization.Email, volunteer.FullName, emailBody);
+            }
+        }
+
+        public JsonResult IsEmailSpeakerExists(string email)
+        {
+            return Json(!db.Users.Any(x => x.Email == email)
+                , JsonRequestBehavior.AllowGet);
         }
     }
 }
