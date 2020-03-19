@@ -622,6 +622,7 @@
     <Content Include="assets\images\icon\relawan-icon.png" />
     <Content Include="assets\images\icon\user.png" />
     <Content Include="assets\images\logo\logo-relawan-covid19.png" />
+    <Content Include="assets\images\logo\logo_square.jpeg" />
     <Content Include="assets\images\no-image.png" />
     <Content Include="assets\images\vector.png" />
     <Content Include="assets\js\blocks\temp.txt" />

@@ -1,6 +1,7 @@
 ﻿@model Volunteers.Models.Job
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = Model.Title + " - " + "Relawan Covid-19";
+    ViewBag.Descriptions = Model.Organization.FullName + " membutuhkan relawan untuk membantu " + Model.Title;
 }
 
 <section class="g-pt-50 g-pb-50">
