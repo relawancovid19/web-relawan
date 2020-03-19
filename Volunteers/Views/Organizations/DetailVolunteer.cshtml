@@ -66,6 +66,13 @@
     <div class="col-lg-6">
         <div class="card">
             <div class="card-body">
+                <h4 class="card-title">Deskripsi Relawan</h4>
+                <h6 class="card-subtitle">Kemampuan atau Pengalaman Relawan</h6>
+                <div class="m-b-30">
+                    <div class="input-group g-brd-primary--focus g-mb-10">
+                        <textarea rows="8" cols="30" class="form-control g-py-5 pr-0 g-font-size-16" name="descriptions" type="text" disabled>@Model.Volunteer.Descriptions</textarea>
+                    </div>
+                </div>
                 <h4 class="card-title">Status Peserta</h4>
                 <h6 class="card-subtitle">Untuk Merubah status peserta terdaftar silahkan pilih</h6>
                 @using (Html.BeginForm("DetailVolunteer", "Organizations", FormMethod.Post, new { enctype = "multipart/form-data" }))
