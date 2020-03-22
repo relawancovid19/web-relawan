@@ -1,0 +1,134 @@
+﻿@model Volunteers.Models.Organization
+@{
+     Layout = "~/Views/Shared/_LayoutOrganizations.cshtml";
+}
+
+<div class="row page-titles">
+    <div class="col-md-6 col-8 align-self-center">
+        <h3 class="text-themecolor m-b-0 m-t-0">Profil</h3>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="@Url.Action("Profile")">Profil</a></li>
+            <li class="breadcrumb-item active">Profil Saya</li>
+        </ol>
+    </div>
+</div>
+
+<!-- Row -->
+<div class="row">
+    <!-- Column -->
+
+    <div class="col-lg-3 col-xlg-3 col-md-5">
+        <div class="card u-shadow-v14">
+            @if (Model.Avatar != null)
+            {
+                <img class="img-responsive img-thumbnail" src="@Model.Avatar" alt="Card image">
+            }
+            else
+            {
+                <div class="g-mb-20">
+                    <img class="img-fluid w-100" src="~/assets/images/user-default.png" alt="Image Description">
+                </div>
+            }
+        </div>
+        <div class="text-center">
+            <button class="btn btn-circle btn-secondary"><i class="fa fa-facebook"></i><a href="@Model.FacebookUrl"></a></button>
+            <button class="btn btn-circle btn-secondary"><i class="fa fa-twitter"></i><a href="@Model.TwitterUrl"></a></button>
+            <button class="btn btn-circle btn-secondary"><i class="fa fa-youtube"></i><a href="@Model.YoutubeUrl"></a></button>
+            <button class="btn btn-circle btn-secondary"><i class="fa fa-instagram"></i><a href="@Model.InstagramUrl"></a></button>
+            <button class="btn btn-circle btn-secondary"><i class="fa fa-linkedin"></i><a href="@Model.LinkedInUrl"></a></button>
+        </div>
+    </div>
+
+    <div class="col-8">
+        <div class="card card-outline-info">
+            <div class="card-header">
+                <xh4 class="m-b-0 text-white"></xh4>
+            </div>
+            <div class="card-body">
+                <form class="form" id="verification">
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.Id)
+                </form>
+                <div class="sl-item">
+                    <div class="sl-right">
+                        <div>
+                            <strong>Nama Host</strong>
+                            <blockquote class="m-t-5 text-muted">
+                                @Model.FullName
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+                <div class="sl-item">
+                    <div class="sl-right">
+                        <div>
+                            <strong>Institusi</strong>
+                            <blockquote class="m-t-5 text-muted">
+                                @Model.Institution
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+                @if (Model.Province != null)
+                {
+                    <div class="sl-item">
+                        <div class="sl-right">
+                            <div>
+                                <strong>Provinsi</strong>
+                                <blockquote class="m-t-5 text-muted">
+                                    @Model.Province.Name
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="sl-item">
+                        <div class="sl-right">
+                            <div>
+                                <strong>Provinsi</strong>
+                                <blockquote class="m-t-5 text-muted">
+                                    -
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+                }
+                <div class="sl-item">
+                    <div class="sl-right">
+                        <div>
+                            <strong>Nomor Telepon</strong>
+                            <blockquote class="m-t-5 text-muted">
+                                @Model.PhoneNumber
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sl-item">
+                    <div class="sl-right">
+                        <div>
+                            <strong>Email</strong>
+                            <blockquote class="m-t-5 text-muted">
+                                @Model.Email
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+                <div class="sl-item">
+                    <div class="sl-right">
+                        <div>
+                            <strong>Alamat Lengkap</strong>
+                            <blockquote class="m-t-5 text-muted">
+                                @Html.Raw(HttpUtility.HtmlDecode(Model.Address))
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

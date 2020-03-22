@@ -200,6 +200,7 @@
     <Compile Include="Controllers\JobsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OrganizationsController.cs" />
+    <Compile Include="Controllers\UploadImagesController.cs" />
     <Compile Include="Controllers\VolunteerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -5659,6 +5660,9 @@
     <Content Include="Views\Organizations\VolunteerJobs.cshtml" />
     <Content Include="Views\Organizations\EditJob.cshtml" />
     <Content Include="Views\Organizations\DetailVolunteer.cshtml" />
+    <Content Include="Views\Organizations\EditProfile.cshtml" />
+    <Content Include="Views\UploadImages\_GetOrganizationAvatar.cshtml" />
+    <Content Include="Views\Organizations\Profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

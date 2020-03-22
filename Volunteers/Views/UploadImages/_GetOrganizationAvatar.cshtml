@@ -1,0 +1,12 @@
+﻿@model Volunteers.Models.Organization
+
+<div id="avatarHostImage">
+    @if (Model.Avatar != null)
+    {
+        <img class="img-responsive" src="@Model.Avatar" />
+    }
+    else
+    {
+        <img class="img-responsive" src="~/assets/images/no-image.png">
+    }
+</div>

@@ -66,5 +66,43 @@ namespace Volunteers.Helpers
             }
             return ToCustomDomain(fullPath);
         }
+        public static async Task<string> UploadOrganizationImageAsync(HttpPostedFileBase fileToUpload)
+        {
+            var id = Guid.NewGuid().ToString();
+            var permalink = "avatar/" + id;
+            if (fileToUpload == null || fileToUpload.ContentLength == 0)
+            {
+                return null;
+            }
+
+            string fullPath = null;
+            string fName = ValidateFileName(fileToUpload.FileName);
+            try
+            {
+                CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConfigurationManager.ConnectionStrings["StorageConnection"].ConnectionString);
+
+                CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+                CloudBlobContainer container = blobClient.GetContainerReference("images");
+
+                string fileName = String.Format("{0}{1}", permalink + "/" + fName.Replace(" ", "-").ToLower(),
+                    Path.GetExtension(fileToUpload.FileName).ToLower());
+
+                CloudBlockBlob blockBlob = container.GetBlockBlobReference(fileName);
+                blockBlob.Properties.ContentType = fileToUpload.ContentType;
+                await blockBlob.UploadFromStreamAsync(fileToUpload.InputStream);
+
+
+                var uriBuilder = new UriBuilder(blockBlob.Uri);
+                uriBuilder.Scheme = "https";
+                fullPath = uriBuilder.ToString().Replace(":443", "").ToLower();
+            }
+            catch (Exception ex)
+            {
+                Trace.TraceError(ex.Message);
+                Trace.TraceError(ex.StackTrace);
+                return "";
+            }
+            return ToCustomDomain(fullPath);
+        }
     }
 }
