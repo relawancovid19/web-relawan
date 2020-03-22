@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -154,5 +155,92 @@ namespace Volunteers.Controllers
                 await Helpers.EmailHelper.Send(registrationEmail.Subject.Replace("[SessionName]", job.Title),volunteer.Email,volunteer.FullName, emailBody);
             }
         }
+        [HttpGet]
+        public async Task<ActionResult> EditProfile()
+        {
+            var username = User.Identity.Name;
+
+            var organization = db.Organizations.Include("Province").FirstOrDefault(u => u.UserName.Equals(username));
+
+            if (organization != null)
+            {
+                var provinces = await db.Provinces.Where(x => x.IsActive == true)
+                       .Select(i => new SelectListItem()
+                       {
+                           Text = i.Name,
+                           Value = i.IdProvince,
+                           Selected = false
+                       }).ToArrayAsync();
+                if (organization.Province != null)
+                {
+                    foreach (var p in provinces)
+                    {
+                        if (organization.Province.IdProvince == p.Value)
+                        {
+                            p.Selected = true;
+                        }
+                    }
+                }
+                ViewBag.Provinces = provinces;
+                return View(organization);
+            }
+            return View("Error");
+        }
+        [HttpPost]
+        public async Task<ActionResult> EditProfile(ViewModels.EditOrganization data)
+        {
+            if (ModelState.IsValid)
+            {
+                var currentUTCTime = DateTimeOffset.UtcNow;
+                var username = User.Identity.Name;
+
+                var organization = db.Organizations.FirstOrDefault(u => u.UserName.Equals(username));
+                var province = await db.Provinces.FindAsync(data.Province);
+                if (organization != null && province != null)
+                {
+                    organization.FullName = data.FullName;
+                    organization.Title = data.Title;
+                    organization.Updated = currentUTCTime;
+                    organization.Institution = data.Institution;
+                    organization.PhoneNumber = data.PhoneNumber;
+                    organization.Address = data.Address;
+                    organization.Province = province;
+                    organization.FacebookUrl = data.FacebookUrl;
+                    organization.InstagramUrl = data.InstagramUrl;
+                    organization.TwitterUrl = data.TwitterUrl;
+                    organization.LinkedInUrl = data.LinkedInUrl;
+                    organization.YoutubeUrl = data.YoutubeUrl;
+
+                    try
+                    {
+                        db.Entry(organization).State = EntityState.Modified;
+                        var result = await db.SaveChangesAsync();
+                        if (result > 0)
+                        {
+                            return Json("OK", JsonRequestBehavior.AllowGet);
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Trace.TraceError(ex.Message);
+                        Trace.TraceError(ex.StackTrace);
+                    }
+                }
+                else
+                {
+                    return Json("KO", JsonRequestBehavior.AllowGet);
+                }
+            }
+            return Json("KO", JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> Profile()
+        {
+            var organization = await db.Organizations.Include("Province").Where(x => x.UserName == User.Identity.Name).SingleOrDefaultAsync();
+            return View(organization);
+        }
+        
     }
 }

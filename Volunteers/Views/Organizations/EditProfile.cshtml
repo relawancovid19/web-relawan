@@ -1,0 +1,225 @@
+﻿@model Volunteers.Models.Organization
+@{
+    Layout = "~/Views/Shared/_LayoutOrganizations.cshtml";
+}
+<div class="row page-titles">
+    <div class="col-md-6 col-8 align-self-center">
+        <h3 class="text-themecolor m-b-0 m-t-0">Edit Profil</h3>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="@Url.Action("Profile")">Profil</a></li>
+            <li class="breadcrumb-item active">Edit Profil</li>
+        </ol>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-8">
+        <div class="card card-outline-info">
+            <div class="card-header">
+                <h4 class="m-b-0 text-white">Edit Profil</h4>
+            </div>
+            <div class="card-body">
+                <div class="form-body">
+                    @using (Html.BeginForm("EditProfile", "Organizations", FormMethod.Post, new { enctype = "multipart/form-data", id = "EditProfile" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(model => model.Id)
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.FullName, "Nama Lengkap", htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control", placeholder = "Ketikan nama lengkap...", required = "required" } })
+                            @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Institution, "Institusi", htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.Institution, new { htmlAttributes = new { @class = "form-control", placeholder = "Institution", required = "required" } })
+                            @Html.ValidationMessageFor(model => model.Institution, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group ">
+                            @Html.LabelFor(model => model.PhoneNumber, "Nomor Telepon", htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                            @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Title, "Jabatan", htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control", placeholder = "Title" } })
+                            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Address, "Alamat", htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Province, "Provinsi", htmlAttributes: new { @class = "control-label" })
+
+                            <select class="form-control" id="Province" name="Province" style="width:100%" required="required">
+                                @{
+                                    foreach (var option in (IEnumerable<SelectListItem>)ViewBag.Provinces)
+                                    {
+                                        if (option.Selected)
+                                        {
+                                            <option value="@option.Value" selected>@option.Text</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@option.Value">@option.Text</option>
+                                        }
+
+                                    }
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.FacebookUrl, "Facebook Url", htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.FacebookUrl, new { htmlAttributes = new { @class = "form-control", placeholder = "Link" } })
+                            @Html.ValidationMessageFor(model => model.FacebookUrl, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group ">
+                            @Html.LabelFor(model => model.YoutubeUrl, "Youtube Url", htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.YoutubeUrl, new { htmlAttributes = new { @class = "form-control", placeholder = "Link" } })
+                            @Html.ValidationMessageFor(model => model.YoutubeUrl, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.InstagramUrl, "Instagram Url", htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.InstagramUrl, new { htmlAttributes = new { @class = "form-control", placeholder = "Link" } })
+                            @Html.ValidationMessageFor(model => model.InstagramUrl, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group ">
+                            @Html.LabelFor(model => model.TwitterUrl, "Twitter Url", htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.TwitterUrl, new { htmlAttributes = new { @class = "form-control", placeholder = "Link" } })
+                            @Html.ValidationMessageFor(model => model.TwitterUrl, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group ">
+                            @Html.LabelFor(model => model.LinkedInUrl, "LinkedIn Url", htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.LinkedInUrl, new { htmlAttributes = new { @class = "form-control", placeholder = "Link" } })
+                            @Html.ValidationMessageFor(model => model.LinkedInUrl, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-actions text-right">
+                            <button type="submit" class="btn btn-info"> <i class="fa fa-check"></i> Perbarui</button>
+                            @*@Html.ActionLink("Cancel", "Profile", null, new { @class = "btn btn-inverse" })*@
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <h4 class="card-title">Avatar</h4>
+        <h6 class="card-subtitle">Avatar untuk <em>Host</em></h6>
+        <div>
+            <div id="avatarOrganizerImage">
+                @if (Model.Avatar != null)
+                {
+                    <img class="img-responsive" src="@Model.Avatar" />
+                }
+            </div>
+            <div class="dropzone" id="organizationAvatar"></div>
+        </div>
+    </div>
+</div>
+
+@section styles
+{
+    <link href="~/assets/vendor/sweetalert/sweetalert.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" />
+    <link href="~/assets/vendor/dropzone-master/dist/dropzone.css" rel="stylesheet" type="text/css" />
+}
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/assets/vendor/tinymce/tinymce.min.js"></script>
+    <script src="~/assets/js/manage/main.js"></script>
+    <script src="~/assets/vendor/sweetalert/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="~/assets/vendor/dropzone-master/dist/dropzone.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#EditProfile").submit(function (e) {
+                e.preventDefault();
+                var data = $('#EditProfile').serialize();
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("EditProfile", "Organizations")',
+                    data: data,
+                    success: function (data) {
+                        if (data == "OK") {
+                            swal({
+                                title: "Sukses",
+                                text: "Berhasil melakukan perubahan",
+                                type: "success",
+                                button: true,
+                            })
+                        } else {
+                            swal({
+                                title: "Terjadi Kesalahan",
+                                text: "Gagal melakukan perubahan",
+                                type: "error"
+                            })
+                        }
+                    }
+                });
+            });
+        });
+
+    </script>
+
+    <script>
+        Dropzone.autoDiscover = false;
+        $("#organizationAvatar").dropzone({
+            url: "@Url.Action("UploadOrganizationAvatar", "UploadImages")",
+            paramName: "file",
+            maxFilesize: 0.5,
+            uploadMultiple: false,
+            acceptedFiles: "image/*",
+
+            init: function () {
+                this.on("thumbnail", function (file) {
+                    if (file.width != file.height) {
+                        file.rejectDimensions();
+                    }
+                    else {
+                        file.acceptDimensions();
+                    }
+                });
+                this.on("sending", function (file, xhr, formData) {
+                    formData.append("id","@Model.Id");
+                });
+                this.on("maxfilesexceeded", function (file) {
+                    this.removeAllFiles();
+                    this.addFile(file);
+                });
+                this.on("error", function (file, message) {
+                    swal("Terjadi kesalahan", "File harus dalam ratio 1:1 (square) dan tidak boleh lebih dari 500 KB");
+                    this.removeFile(file);
+                });
+                var myDropZone = this;
+                this.on("queuecomplete", function (file) {
+                    id = "@Model.Id";
+                    var data = {
+                        'id': id
+                    };
+                    $.ajax({
+                        type: "GET",
+                        url: '@Url.Action("GetOrganizationtAvatar", "UploadImages")',
+                        data: data,
+                        success: function (data) {
+                            $("#avatarOrganizerImage").replaceWith(data);
+                        },
+                        complete: function () {
+                            myDropZone.removeAllFiles();
+                        }
+                    })
+                });
+            },
+
+            accept: function (file, done) {
+                file.acceptDimensions = done;
+                file.rejectDimensions = function () { done("invalid ratio"); };
+            }
+        });
+    </script>
+}
+    
